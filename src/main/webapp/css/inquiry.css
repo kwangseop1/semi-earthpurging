@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/*inquiryList*/
+.inquiry-wrap{
+	width: 900px;
+	margin: 0 auto;
+}
+.inquiry-wrap>span {
+	display: inline-block;
+	width: 120px;
+	height: 40px;
+	background-color: #c1c1c1;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: 700;
+}
+#inquiry-tbl{
+	width: 900px;
+	margin: 0 auto;
+}
+
+/*inquiryView*/
+/*updateInquiryFrm*/
+#page-content{
+	width: 900px;
+	margin: 0 auto;
+}
+.th{
+	background-color: #c1c1c1;
+	font-weight: 700;
+}
+#inquiry-content{
+	width: 100%;
+	min-height: 300px;
+    text-align: left;
+}
+
+

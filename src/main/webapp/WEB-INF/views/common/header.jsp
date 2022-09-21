@@ -1,5 +1,10 @@
+<%@page import="com.earthpurging.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+		Member m = (Member)session.getAttribute("m");
+	%>
     
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,12 +32,12 @@
                 <li><a href="javascript:void(0);">쓰담위크 퀘스트</a></li>
                 <li><a href="javascript:void(0);">쓰담 스토리</a></li>
                 <li><a href="javascript:void(0);">쓰담 굿즈</a></li>
-                <li><a href="javascript:void(0);">쓰담 소식</a></li>
+                <li><a href="/noticeList.do?reqPage=1">쓰담 소식</a></li>
                 <li><a href="javascript:void(0);">진행중인 플로깅</a></li>
                 <li><a href="/admin.do">관리자</a></li>
             </ul>
             <ul class="util-menu">
-                <li><a href="javascript:void(0);">로그인/회원가입</a></li>
+                <li><a href="/signinFrm.do">로그인/회원가입</a></li>
                 <li><a href="/mypage.do">마이페이지</a></li>
 
             </ul>
