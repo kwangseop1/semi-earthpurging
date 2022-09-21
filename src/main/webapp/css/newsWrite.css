@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+.page-title{
+	width: 230px;
+	
+	margin: 0 auto;
+	font-size: 35px;
+	font-weight: 900;
+	text-align: center;
+	padding: 60px 0px;
+}
+.tbl{
+	margin: 0 auto;
+	width: 900px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.th{
+	font-weight: 700;
+	background-color: rgba(0, 173, 181, 0.1);
+}
+.tbl th,
+.tbl td{
+	border: 1px solid rgb(229, 230, 232);
+}
+.writeBtn{
+	width: 866px;
+	height: 60px;
+	border: none;
+}
