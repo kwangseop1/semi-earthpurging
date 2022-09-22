@@ -25,7 +25,7 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	<div class="page-content">
-		<div class="page-title">쓰담소식</div>
+		<div class="page-title"><span class="page-title1">쓰</span>담소식</div>
 		<div class="notice-navi-wrap">
 			<div class="navi-wrap">
 				<div><a href="#">공지사항</a></div>

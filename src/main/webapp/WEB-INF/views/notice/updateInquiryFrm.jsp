@@ -42,8 +42,8 @@
 						</select>
 					</td>
 					<th class="th">첨부파일</th>
-					<!-- 기존파일을 지웠는지 체크용도 -->
-						<input type="hidden" name="status" value="stay">	
+					
+					<input type="hidden" name="status" value="stay">	
 					<td>
 						<%if(inq.getInquiry_filepath() != null) {%>
 							<img src="/img/file.png" width="16px" class="delFile">

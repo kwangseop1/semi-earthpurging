@@ -11,9 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/news.css">
+
+    <link rel="stylesheet" href="/css/newsView.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -21,18 +20,18 @@
 		<div class="page-title">쓰담 공지사항</div>
 		<table class="tbl" id="noticeView">
 			<tr>
-				<th colspan="6"><%=n.getNoticeTitle() %></th>
+				<th colspan="6" class="th"><%=n.getNoticeTitle() %></th>
 			</tr>
 			<tr>
-				<th>작성자</th>
+				<th class="th">작성자</th>
 				<td><%=n.getNoticeWriter() %></td>
-				<th>조회수</th>
+				<th class="th">조회수</th>
 				<td><%=n.getReadCount() %></td>
-				<th>작성일</th>
+				<th class="th">작성일</th>
 				<td><%=n.getRegDate() %></td>
 			</tr>
 			<tr>
-				<th>첨부파일</th>
+				<th class="th">첨부파일</th>
 				<td colspan="5">
 				<%if(n.getFilename() != null) {%>
 				<img src="/img/file.png" width="16px">
@@ -46,7 +45,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>
+				<th colspan="6">
 					<a class="btn updateBtn" href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
 					<button class="btn delBtn" onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button>
 				</th>
@@ -59,6 +58,7 @@
 				location.href="/noticeDelete.do?noticeNo="+noticeNo;
 			}
 		}
+		
 	</script>
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.earthpurging.notice.model.service.NoticeService;
 import com.earthpurging.notice.model.vo.Inquiry;
+import com.earthpurging.notice.model.vo.InquiryViewData;
 
 /**
  * Servlet implementation class InquiryViewServlet
@@ -33,11 +34,11 @@ public class InquiryViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		int inquiryNo = Integer.parseInt(request.getParameter("inquiry_no"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		NoticeService service = new NoticeService();
-		Inquiry inq = service.selectOneInquiry(inquiryNo);
+		InquiryViewData ivd = service.selectOneInquiry(inquiryNo);
 		
-		if(inq == null) {
+		if(ivd == null) {
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/common/msg.jsp");
 			request.setAttribute("title", "조회실패");
 			request.setAttribute("msg", "게시글이 존재하지 않습니다.");

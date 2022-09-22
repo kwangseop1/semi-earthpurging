@@ -7,7 +7,9 @@ import org.apache.tomcat.util.bcel.classfile.JavaClass;
 
 import com.earthpurging.notice.model.dao.NoticeDao;
 import com.earthpurging.notice.model.vo.Inquiry;
+import com.earthpurging.notice.model.vo.InquiryComment;
 import com.earthpurging.notice.model.vo.InquiryPageData;
+import com.earthpurging.notice.model.vo.InquiryViewData;
 import com.earthpurging.notice.model.vo.Notice;
 import com.earthpurging.notice.model.vo.NoticePageData;
 
@@ -201,13 +203,15 @@ public class NoticeService {
 	}
 
 
-	public Inquiry selectOneInquiry(int inquiryNo) {
+	public InquiryViewData selectOneInquiry(int inquiryNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		Inquiry inq = null;
-		inq = dao.selectOneInquiry(conn, inquiryNo);
+		Inquiry inq = dao.selectOneInquiry(conn, inquiryNo);
+		
+		ArrayList<InquiryComment> commentList = dao.selectInquiryCommentList(conn, inquiryNo);
+		InquiryViewData ivd = new InquiryViewData(inq, commentList);
 		JDBCTemplate.close(conn);
 		
-		return inq;
+		return ivd;
 	}
 
 

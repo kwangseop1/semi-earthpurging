@@ -23,11 +23,15 @@
 	text-align: center;
 	padding: 60px 0px;
 }
+.page-title1{
+	color: #00aaad;
+	font-size: 35px;
+	font-weight: 900;
+}
 .notice-navi-wrap{
 	display: flex;
 	width: 900px;
 	margin: 0 auto;
-	background-color: gray;
 	padding: 45px 0px;
 	font-size: 25px;
 }
@@ -66,6 +70,7 @@
     transition-duration: 0.5s;
     font-size: 16px;
 }
+
 
 
 

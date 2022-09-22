@@ -5,9 +5,11 @@
 	margin: 0;
 	padding: 0;
 }
+.page-content{
+	width: 1200px;
+}
 .page-title{
-	width: 230px;
-	
+	width: 260px;
 	margin: 0 auto;
 	font-size: 35px;
 	font-weight: 900;
