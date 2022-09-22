@@ -17,7 +17,7 @@ public class StoryDao {
 		ResultSet rset = null;
 		ArrayList<Story> list = new ArrayList<Story>();
 		
-		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, S.* FROM(SELECT M.NICKNAME, S.*FROM STORY_LIST S LEFT JOIN STORY_TEST_MEMBER M ON S.STORY_WRITER = M.MEMBER_NO ORDER BY STORY_NO DESC)S) WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, S.* FROM(SELECT M.NICKNAME, S.*FROM STORY_TBL S LEFT JOIN MEMBER_TBL M ON S.STORY_WRITER = M.MEMBER_NO ORDER BY STORY_NO DESC)S) WHERE RNUM BETWEEN ? AND ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, start);
@@ -56,7 +56,7 @@ public class StoryDao {
 		ResultSet rset = null;
 		int totalCount = 0;
 		
-		String query ="select count(*) as cnt from story_list";
+		String query ="select count(*) as cnt from story_TBL";
 		
 		try {
 			pstmt= conn.prepareStatement(query);
@@ -80,7 +80,7 @@ public class StoryDao {
 	public int insertStory(Connection conn, Story s) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into story_list values(story_seq.nextval,?,0,to_char(sysdate,'yyyy-mm-dd'),?,?,0)";
+		String query = "insert into story_TBL values(story2_seq.nextval,?,0,to_char(sysdate,'yyyy-mm-dd'),?,?,0)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -104,7 +104,7 @@ public class StoryDao {
 		PreparedStatement pstmt= null;
 		ResultSet rset = null;
 		Story s = null;
-		String query = "SELECT M.NICKNAME, S.*FROM STORY_LIST S LEFT JOIN STORY_TEST_MEMBER M ON S.STORY_WRITER = M.MEMBER_NO where s.story_no=?";
+		String query = "SELECT M.NICKNAME, S.*FROM STORY_TBL S LEFT JOIN MEMBER_TBL M ON S.STORY_WRITER = M.MEMBER_NO where s.story_no=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -120,6 +120,7 @@ public class StoryDao {
 				s.setPhotoPath(rset.getString("photo_path"));
 				s.setStoryWriter(rset.getInt("story_writer"));
 				s.setLikeCount(rset.getInt("like_count"));
+				s.setNickname(rset.getString("nickname"));
 			}
 			
 			
@@ -138,7 +139,7 @@ public class StoryDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update story_list set story_content =?, photo_path=? where story_no=? ";
+		String query = "update story_TBL set story_content =?, photo_path=? where story_no=? ";
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, s.getStoryContent());
@@ -161,7 +162,7 @@ public class StoryDao {
 	public int deleteStory(Connection conn, int storyNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query ="delete from story_list where story_no = ?";
+		String query ="delete from story_TBL where story_no = ?";
 		
 		try {
 			pstmt=conn.prepareStatement(query);
