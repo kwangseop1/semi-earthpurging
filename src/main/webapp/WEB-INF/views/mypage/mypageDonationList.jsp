@@ -64,7 +64,7 @@
         </div>
         <!-- // content -->
         <%@include file="/WEB-INF/views/common/footer.jsp" %>
-        <script src="/js/mypage.js"></script>
+        <script src="/js/sideMenu.js"></script>
     </div>
 </body>
 </html>

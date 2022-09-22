@@ -5,8 +5,8 @@
     <ul>
         <li class="active"><a href="/admin.do">메인</a></li>
         <li><a href="/adminUserList.do">회원관리</a></li>
-        <li><a href="admin-donation.html">후원관리</a></li>
-        <li><a href="admin-challenge.html">챌린지관리</a></li>
+        <li><a href="/adminDonation.do">후원관리</a></li>
+        <li><a href="/adminChallenge.do">챌린지관리</a></li>
         <li><a href="">크루관리</a></li>
     </ul>
 </div>
