@@ -120,6 +120,7 @@ public class StoryDao {
 				s.setPhotoPath(rset.getString("photo_path"));
 				s.setStoryWriter(rset.getInt("story_writer"));
 				s.setLikeCount(rset.getInt("like_count"));
+				s.setNickname(rset.getString("nickname"));
 			}
 			
 			
