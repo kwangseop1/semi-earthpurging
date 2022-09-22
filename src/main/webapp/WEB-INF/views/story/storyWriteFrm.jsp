@@ -32,7 +32,7 @@
 	<header>
         <div class="upload-header">
             <div class="logo-img">
-                <a href="/"><img src="img/logo-plogging.png" style="width: 100%"></a>
+                <a href="/"><img src="img/common/logo-plogging.png" style="width: 100%"></a>
             </div>
         </div>
     </header>
