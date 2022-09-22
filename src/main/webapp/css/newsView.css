@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 *{
 	margin: 0;
 	padding: 0;
@@ -16,7 +15,7 @@
 	text-align: center;
 	padding: 60px 0px;
 }
-.tbl{
+#noticeView{
 	margin: 0 auto;
 	width: 900px;
     border-spacing: 0px;
@@ -30,8 +29,21 @@
 .tbl td{
 	border: 1px solid rgb(229, 230, 232);
 }
-.writeBtn{
-	width: 866px;
-	height: 60px;
-	border: none;
+#noticeContent{
+	min-height: 300px;
+    text-align: left;
 }
+
+.btn{
+	background-color: #5AC5DB;
+}
+.btn:hover{
+	background-color: #0078AA;
+	cursor: pointer;
+}
+.delBtn{
+	height: 48px;
+	line-height: 10px;
+}
+
+

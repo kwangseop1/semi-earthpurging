@@ -26,11 +26,39 @@
 				<li>
 					<div class="question-icon">
 						<span>Q</span>
-						<img src="/img/arrowDown.png">
+						<span>신청은 혼자 했는데 활동을 친구 또는 가족과 했습니다. 쓰담 기록지를 모두 제출하면 인정되나요???????????</span>
+						<img src="/img/news/arrowDown.png">
 					</div>
 					<p class="question-content">
-					후원 하고 싶어요 뭘할까여ㅛ
-					다시 할까요
+					사전신청을 한 인원에 한해서만 기록지 제출이 인정됩니다. 참여자 개별 사전 신청 바랍니다.
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="FAQ-wrap2">
+			<ul>
+				<li>
+					<div class="question-icon2">
+						<span>Q</span>
+						<span>참가신청만 하면 봉사시간이 인증되나요??????</span>
+						<img src="/img/news/arrowDown.png">
+					</div>
+					<p class="question-content2">
+					아니요, 활동 후 반드시 쓰담 기록지를 제출해주셔야 합니다.
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="FAQ-wrap3">
+			<ul>
+				<li>
+					<div class="question-icon3">
+						<span>Q</span>
+						<span>참가신청만 하면 봉사시간이 인증되나요??????</span>
+						<img src="/img/news/arrowDown.png">
+					</div>
+					<p class="question-content3">
+					아니요, 활동 후 반드시 쓰담 기록지를 제출해주셔야 합니다.
 					</p>
 				</li>
 			</ul>
@@ -38,11 +66,27 @@
 	</div>
 	
 	<script>
-		
 		$(".question-icon>img").on("click",function(){
-			$(".question-content").css("height","40px");
-			$(".question-icon>img").attr("src","/img/arrowUp.png");
-			
+			if($(this).parent().hasClass("active")) {
+				$(this).parent().removeClass("active");
+				$(this).parent().next().css("height","0px");
+				$(".question-icon>img").attr("src","/img//news/arrowDown.png");
+			} else {
+				$(this).parent().addClass("active");
+				$(this).parent().next().css("height","60px");
+				$(".question-icon>img").attr("src","/img//news/arrowUp.png");
+			}
+		});
+		$(".question-icon2>img").on("click",function(){
+			if($(this).parent().hasClass("active")) {
+				$(this).parent().removeClass("active");
+				$(this).parent().next().css("height","0px");
+				$(".question-icon2>img").attr("src","/img//news/arrowDown.png");
+			} else {
+				$(this).parent().addClass("active");
+				$(this).parent().next().css("height","60px");
+				$(".question-icon2>img").attr("src","/img//news/arrowUp.png");
+			}
 		});
 		
 		

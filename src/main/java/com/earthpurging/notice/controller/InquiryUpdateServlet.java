@@ -82,7 +82,6 @@ public class InquiryUpdateServlet extends HttpServlet {
 		     request.setAttribute("icon", "error");
 		  }
 		  request.setAttribute("loc", "/inquiryView.do?inquiryNo="+inquiryNo);
-		  System.out.println(inquiryNo);
 		  view.forward(request, response);
 		
 	}
