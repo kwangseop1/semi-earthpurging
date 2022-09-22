@@ -41,7 +41,7 @@
 			<%for(Inquiry inq : list) {%>
 			<tr>
 				<td><%=inq.getIs_answer() %></td>
-				<td><a href="/inquiryView.do?inquiry_no=<%=inq.getInquiry_no() %>"><%=inq.getInquiry_title() %></a></td>
+				<td><a href="/inquiryView.do?inquiryNo=<%=inq.getInquiry_no() %>"><%=inq.getInquiry_title() %></a></td>
 				<td><%=inq.getInquiry_writer() %></td>
 				<td><%=inq.getInquiry_enroll_date() %></td>
 			</tr>

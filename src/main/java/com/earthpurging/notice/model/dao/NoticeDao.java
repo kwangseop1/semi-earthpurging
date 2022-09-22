@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.earthpurging.notice.model.vo.Inquiry;
+import com.earthpurging.notice.model.vo.InquiryComment;
 import com.earthpurging.notice.model.vo.Notice;
 
 import common.JDBCTemplate;
@@ -244,7 +245,7 @@ public class NoticeDao {
 				inq.setInquiry_title(rset.getString("inquiry_title"));
 				inq.setInquiry_content(rset.getString("inquiry_content"));
 				inq.setInquiry_enroll_date(rset.getString("inquiry_enroll_date"));
-				inq.setInquirer_email(rset.getString("inquiry_email"));
+				inq.setInquirer_email(rset.getString("inquirer_email"));
 				inq.setIs_answer(rset.getString("is_answer"));
 				inq.setInquiry_filepath(rset.getString("inquiry_filepath"));
 			}
@@ -317,5 +318,34 @@ public class NoticeDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	public ArrayList<InquiryComment> selectInquiryCommentList(Connection conn, int inquiryNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<InquiryComment> list = new ArrayList<InquiryComment>();
+		String query = "select * from inquiry_comment where inquiry_ref=? and ic_ref is not null order by 1";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, inquiryNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				InquiryComment inq = new InquiryComment();
+				inq.setIcContent(rset.getString("ic_content"));
+				inq.setIcDate(rset.getString("ic_date"));
+				inq.setIcNo(rset.getInt("ic_no"));
+				inq.setIcRef(rset.getInt("ic_ref"));
+				inq.setIcWriter(rset.getString("ic_writer"));
+				inq.setInquiryRef(rset.getInt("inquiry_ref"));
+				list.add(inq);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
 	}
 }
