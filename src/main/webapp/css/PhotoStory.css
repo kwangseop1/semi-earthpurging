@@ -1,0 +1,162 @@
+
+
+
+
+
+
+/*-------------------사진 스토리------------------*/
+/*
+font-family: 'NanumGothicLight';
+font-family: 'NanumGothic';
+font-family: 'NanumGothicBold';
+font-family: 'NanumGothicExtraBold';
+*/
+.story-title{
+    width: 1200px;
+    min-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    padding-top: 80px;
+    border-bottom: 1px solid #515151;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+}
+
+.story-title>h1 {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 500px;
+    font-size: 30px;
+    font-family: 'NanumGothicExtraBold';
+    font-weight: 1000;
+}
+.story-title> div:last-child a{
+    text-align: center;
+    margin: auto ;
+    font-size: 15px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    position: absolute;
+    right: 0px;
+    bottom: 6px;
+}
+.story-menu{
+    width: 200px;
+}
+.story-menu li{
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.story-menu li :hover{
+    cursor: pointer;
+    color: red;
+}
+
+.story-menu a{
+    font-size: 20px;
+    font-family: 'NanumGothicBold';
+}
+.mid-content{
+    width: 1200px;
+    overflow: hidden;
+    margin: 70px auto;
+
+}
+.mid-content>div{
+    float: left;
+}
+.story-wrap{
+    text-align: center;
+    width: 1000px;
+    flex-wrap: wrap;
+}
+.story-box{
+    width: 320px;
+    padding: 20px 0px;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+}
+.photo-box {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.photo-box img{
+    box-sizing: border-box;
+    width: 280px;
+    height: 300px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.photo-box:hover{
+    cursor: pointer;
+}
+.photo-box:hover img{
+    transform: scale(1.03);
+    transition: all 0.35s ease-in-out;
+    border-radius: 15px; 
+}
+/*좋아요부분*/
+.like-box{
+    width: 300px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+.like-box>span{
+    font-size: 30px;
+    line-height: 40px;
+}
+.like-box>span:hover{
+    cursor: pointer;
+
+}
+.story-text{
+    width: 280px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+.story-text span{
+    margin: 0;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #515151;
+}
+.story-text span:hover{
+    color:darkgrey;
+    cursor: pointer;
+}
+.pix-area{
+    padding-top: 20px;
+}
+.pix-area .btn{
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.story-modal{
+    width: 800px;
+    background-color: beige;
+}
+#story-comment{
+    width: 400px;
+    height: 20px;
+}
+#storyWriter{
+    font-size: 15px;
+    font-family: 'NanumGothicExtraBold';
+}
