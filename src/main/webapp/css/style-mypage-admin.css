@@ -86,6 +86,7 @@
     padding:50px 0;
 }
 .input-line{
+    position:relative;
     display:flex;
     flex-direction: column;
 
@@ -94,11 +95,29 @@
     margin-top:20px;
 }
 .input-line label{
-
     margin-bottom:.6em;
-
     font-weight:700;
     font-size:14px;
+}
+.input-line.is-invalid label{
+    color:red;
+}
+.input-line.is-invalid .input-form{
+    border:1px solid red;
+}
+.input-line .comment {
+    display:block;
+    position:absolute;
+    top:-15px;
+    right:0;
+    font-size:11px;
+}
+.input-line label ~ .comment{
+    top:2px;
+    right:0;
+}
+.input-line.is-invalid .comment{
+    color:red;
 }
 .input-group{
     display: flex;
@@ -119,7 +138,7 @@
 .form-btn .btn{
     width:100%;
 }
-.btn-del{
+.btn-user-del{
     background-color:transparent;
     margin-top:5px;
     border:0;
@@ -297,6 +316,7 @@
     height:100%;
     width:40%;
     background:var(--point-color-blue);
+    transition:width .5s;
     
 } 
 .user-score-status{

@@ -659,9 +659,18 @@ header .header-container{
     font-weight:700;
 }
 .util-menu{
+    display:flex;
+
     position:absolute;
     right:15px;
     bottom:60px;
+
+}
+.util-menu > li + li{
+  margin-left:10px;
+}
+.util-menu > li > a{
+  font-size:15px;
 }
 .util-menu > li > a:hover{
     text-decoration: underline;
