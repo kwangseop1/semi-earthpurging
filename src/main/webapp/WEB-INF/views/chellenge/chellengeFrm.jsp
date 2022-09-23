@@ -12,7 +12,7 @@
     <%@include file="/WEB-INF/views/common/header.jsp" %>
     <!-- content -->
     <div class="page-content">
-    <a href="/quest1.do">
+    <a href="/quest1Frm.do">
 	 <img src="/img/img/지구쓰담.png">
     </a>
     </div>

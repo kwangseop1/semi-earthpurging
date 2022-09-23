@@ -11,7 +11,7 @@ $(document).ready(function(){
 $(function(){
     //input을 datepicker로 선언
     $("#start-date").datepicker({
-      dateFormat: 'yy/mm/dd' //달력 날짜 형태
+      dateFormat: 'yymmdd' //달력 날짜 형태
       ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
       ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
       ,changeYear: true //option값 년 선택 가능
@@ -78,7 +78,7 @@ var fileTarget1 = $('.filebox1 .upload-hidden');
   $('.prevBtn').on("click",function(){
     bool = confirm("step1로 돌아가시겠습니까?");
     if(bool){
-      location.href="quest1.html";
+      location.href="quest1.jsp";
     }else{
       return false;
     };
@@ -105,10 +105,14 @@ var fileTarget1 = $('.filebox1 .upload-hidden');
       alert('인증샷 이미지를 첨부해주세요');
       return;
     }
+    if($("#p_memo").val()===''){
+      alert('인증샷 이미지를 첨부해주세요');
+      return;
+    }
 
     bool = confirm("step2로 넘어가시겠습니까?");
     if(bool){
-      location.href="quest3.html";
+      location.href="/quest3Frm.do";
     }else{
       return false;
     };

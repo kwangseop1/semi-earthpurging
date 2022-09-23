@@ -27,7 +27,7 @@
 		<a class="kakao_btn" href="http://pf.kakao.com/_HxcUhb"
 			target="_blank"><img src="/img/img/kakao.png" alt="카카오톡"></a>;
 		<div class="top_btn1">
-			<a href="#"><img src="/img/img/plog_logo.png" class="plog_logo"></a>
+			<a href="/"><img src="/img/img/plog_logo.png" class="plog_logo"></a>
 		</div>
 		<div class="top_btn">
 			<p>
@@ -103,8 +103,8 @@
 				</div>
 				<div class="game_wrap">
 					<div class="game_top">
-						<img src="/img/img/game1.png" class="game1"> <img
-							src="/img/img/heart.png" class="game2">
+						<img src="/img/img/game1.png" class="game1"> 
+						<img src="/img/img/heart.png" class="game2">
 					</div>
 					<div class="game_text">
 						어느 도시에서 <br> 퀘스트를 수행하시겠습니까? <br> 원하는 장소를 클릭하세요!
@@ -447,7 +447,7 @@
                         <div class="jeju_click">click!</div>
                     </a>
                 </div>
-                <a href="/quest2.do" class="run33">
+                <a href= "/quest2.do?city=쓰담강릉" class="run33">
                     <div class="run_start">
                         <img src="/img/img/push2.png" class="run_img">
                         <img src="/img/img/push_btn2.png">
