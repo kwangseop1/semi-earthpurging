@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.earthpurging.story.model.vo.Story;
+import com.earthpurging.story.model.vo.StoryComment;
 
 import common.JDBCTemplate;
 
@@ -177,6 +178,87 @@ public class StoryDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	public int updateReadCount(Connection conn, int storyNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update story_tbl set story_read_count = story_read_count+1 where story_no=? ";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, storyNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertStoryComment(Connection conn, StoryComment sc) {
+		PreparedStatement pstmt= null;
+		int result = 0;
+		String query ="insert into story_comment values";
+		query+="(ST_COMMENT_SEQ.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, sc.getScWriter());
+			pstmt.setString(2, sc.getScContent());
+			pstmt.setInt(3, sc.getStoryRef());
+			if(sc.getScRef() == 0) {
+				pstmt.setString(4, null);
+			}else {
+			pstmt.setInt(4, sc.getScRef());
+			}
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+				
+		return result;
+	}
+
+	public ArrayList<StoryComment> selectStoryCommentList(Connection conn, int storyNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<StoryComment> list = new ArrayList<StoryComment>();
+		
+		String query = "select m.nickname, s.* from story_comment s left join member_tbl m on S.sc_WRITER = M.MEMBER_NO where story_ref=? and sc_ref is null";
+		
+		try {
+			pstmt= conn.prepareStatement(query);
+			pstmt.setInt(1, storyNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				StoryComment sc = new StoryComment();
+				sc.setScContent(rset.getString("sc_content"));
+				sc.setScDate(rset.getString("sc_date"));
+				sc.setScNo(rset.getInt("sc_no"));
+				sc.setScRef(rset.getInt("sc_ref"));
+				sc.setScWriter(rset.getInt("sc_writer"));
+				sc.setStoryRef(rset.getInt("story_ref"));
+				sc.setScNickname(rset.getString("nickname"));
+				list.add(sc);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally  {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		
+		return list;
 	}
 
 
