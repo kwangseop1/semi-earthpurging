@@ -78,6 +78,7 @@ font-family: 'NanumGothicExtraBold';
 }
 .story-box{
     width: 320px;
+    height : 500px;
     padding: 20px 0px;
     float: left;
     margin: 0 auto;
