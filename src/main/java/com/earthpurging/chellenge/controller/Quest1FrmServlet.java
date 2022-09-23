@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Quest1Servlet
  */
-@WebServlet(name = "Quest1", urlPatterns = { "/quest1.do" })
-public class Quest1Servlet extends HttpServlet {
+@WebServlet(name = "Quest1Frm", urlPatterns = { "/quest1Frm.do" })
+public class Quest1FrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Quest1Servlet() {
+    public Quest1FrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

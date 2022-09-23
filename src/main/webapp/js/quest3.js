@@ -11,7 +11,7 @@ $(document).ready(function(){
 $('.prevBtn').on("click",function(){
   bool = confirm("step2로 돌아가시겠습니까?");
   if(bool){
-    location.href="quest2.html";
+    location.href="/quest2.do";
   }else{
     return false;
   };
@@ -35,14 +35,15 @@ $('.prevBtn').on("click",function(){
       alert('주소를 입력해주세요');
       return;
     }
-    if($("#person_chk").checked()===''){
-      alert('개인정보동의를 해주세요');
-      return;
-    }
-
+    
+    if(!$('#person_chk').is(':checked')){
+	alert("개인정보 수집을 동의해주세요");
+	return;
+	}
+	
     bool = confirm("쓰담기록을 제출하시겠습니까?");
     if(bool){
-      location.href="#";
+      location.href="/quest3.do";
     }else{
       return false;
     };

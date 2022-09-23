@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.earthpurging.chellenge.model.vo.Chellenge;
-
 /**
- * Servlet implementation class Quest2Servlet
+ * Servlet implementation class Quest3Servlet
  */
-@WebServlet(name = "Quest2", urlPatterns = { "/quest2.do" })
-public class Quest2Servlet extends HttpServlet {
+@WebServlet(name = "Quest3Frm", urlPatterns = { "/quest3Frm.do" })
+public class Quest3FrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Quest2Servlet() {
+    public Quest3FrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +28,12 @@ public class Quest2Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//인코딩
 		request.setCharacterEncoding("utf-8");
-		//값추출 (값 주고)
-		String cityName = request.getParameter("city");
+		//값추출
 		//비즈니스로직
 		//결과처리
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/chellenge/quest2.jsp");
-		request.setAttribute("cityName", cityName);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/chellenge/quest3.jsp");
 		view.forward(request, response);
-		
 	}
 
 	/**

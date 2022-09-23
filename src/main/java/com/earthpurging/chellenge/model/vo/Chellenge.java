@@ -10,17 +10,18 @@ public class Chellenge {
 	private int questWrapper; //비닐 개수
 	private int questTabacoo; //담배꽁초 개수
 	private int questPoint; //퀘스트 점수
-	private int questDate; //퀘스트 등록 날짜
+	private String questDate; //퀘스트 등록 날짜
 	private String Photopath; //사진 올라간 경로
 	private char Permission; // 포인트 승인 여부 (y/n)
 	private String memberThink; //동료들에게 남길 한마디
+	private int qMemberNo;
 	public Chellenge() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Chellenge(int questNO, String questArea, int questCan, int questPla, int questGlass, int questPaper,
-			int questWrapper, int questTabacoo, int questPoint, int questDate, String photopath, char permission,
-			String memberThink) {
+			int questWrapper, int questTabacoo, int questPoint, String questDate, String photopath, char permission,
+			String memberThink, int qMemberNo) {
 		super();
 		this.questNO = questNO;
 		this.questArea = questArea;
@@ -35,6 +36,7 @@ public class Chellenge {
 		Photopath = photopath;
 		Permission = permission;
 		this.memberThink = memberThink;
+		this.qMemberNo = qMemberNo;
 	}
 	public int getQuestNO() {
 		return questNO;
@@ -90,10 +92,10 @@ public class Chellenge {
 	public void setQuestPoint(int questPoint) {
 		this.questPoint = questPoint;
 	}
-	public int getQuestDate() {
+	public String getQuestDate() {
 		return questDate;
 	}
-	public void setQuestDate(int questDate) {
+	public void setQuestDate(String questDate) {
 		this.questDate = questDate;
 	}
 	public String getPhotopath() {
@@ -114,6 +116,11 @@ public class Chellenge {
 	public void setMemberThink(String memberThink) {
 		this.memberThink = memberThink;
 	}
-	
+	public int getqMemberNo() {
+		return qMemberNo;
+	}
+	public void setqMemberNo(int qMemberNo) {
+		this.qMemberNo = qMemberNo;
+	}
 	
 }
