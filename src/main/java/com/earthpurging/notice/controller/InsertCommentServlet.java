@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.earthpurging.notice.model.service.NoticeService;
-import com.earthpurging.notice.model.vo.Inquiry;
-import com.earthpurging.notice.model.vo.InquiryViewData;
+import com.earthpurging.notice.model.vo.InquiryComment;
 
 /**
- * Servlet implementation class InquiryViewServlet
+ * Servlet implementation class InsertCommentServlet
  */
-@WebServlet(name = "InquiryView", urlPatterns = { "/inquiryView.do" })
-public class InquiryViewServlet extends HttpServlet {
+@WebServlet(name = "InsertComment", urlPatterns = { "/insertComment.do" })
+public class InsertCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InquiryViewServlet() {
+    public InsertCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,24 +32,28 @@ public class InquiryViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		InquiryComment ic = new InquiryComment();
+		ic.setIcWriter(request.getParameter("icWriter"));
+		ic.setInquiryRef(Integer.parseInt(request.getParameter("inquiryRef")));
+		ic.setIcContent(request.getParameter("icContent"));
 		
-		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+
 		
 		NoticeService service = new NoticeService();
-		InquiryViewData ivd = service.selectOneInquiry(inquiryNo);
+		int result = service.insertInquiryComment(ic);
 		
-		if(ivd == null) {
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/common/msg.jsp");
-			request.setAttribute("title", "조회실패");
-			request.setAttribute("msg", "게시글이 존재하지 않습니다.");
-			request.setAttribute("icon", "info");
-			request.setAttribute("loc", "/inquiryList.do?reqPage=1");
-		}else {
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/notice/inquiryView.jsp");
-			request.setAttribute("inq", ivd.getInq());
-			request.setAttribute("commentList", ivd.getCommentList());
-			view.forward(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/common/msg.jsp");
+		if(result>0) {
+	           request.setAttribute("title", "성공");
+	           request.setAttribute("msg", "댓글이 등록되었습니다");
+	           request.setAttribute("icon", "success");
+	        }else {
+	           request.setAttribute("title", "실패");
+	           request.setAttribute("msg", "등록 중 문제가 발생하였습니다");
+	           request.setAttribute("icon", "error");
+	        }
+		request.setAttribute("loc", "/inquiryView.do?inquiryNo="+ic.getInquiryRef());
+		view.forward(request, response);
 	}
 
 	/**

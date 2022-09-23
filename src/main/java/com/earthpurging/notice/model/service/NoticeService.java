@@ -208,6 +208,7 @@ public class NoticeService {
 		Inquiry inq = dao.selectOneInquiry(conn, inquiryNo);
 		
 		ArrayList<InquiryComment> commentList = dao.selectInquiryCommentList(conn, inquiryNo);
+		System.out.println(commentList);
 		InquiryViewData ivd = new InquiryViewData(inq, commentList);
 		JDBCTemplate.close(conn);
 		
@@ -254,6 +255,19 @@ public class NoticeService {
 	public int updateInquiry(Inquiry inq) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = dao.updateInquiry(conn, inq);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int insertInquiryComment(InquiryComment ic) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertInquiryComment(conn, ic);
 		if(result > 0) {
 			JDBCTemplate.commit(conn);
 		}else {
