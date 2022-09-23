@@ -324,20 +324,20 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<InquiryComment> list = new ArrayList<InquiryComment>();
-		String query = "select * from inquiry_comment where inquiry_ref=? and ic_ref is not null order by 1";
+		String query = "select * from inquiry_comment where inquiry_ref=? order by 1";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, inquiryNo);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				InquiryComment inq = new InquiryComment();
-				inq.setIcContent(rset.getString("ic_content"));
-				inq.setIcDate(rset.getString("ic_date"));
-				inq.setIcNo(rset.getInt("ic_no"));
-				inq.setIcRef(rset.getInt("ic_ref"));
-				inq.setIcWriter(rset.getString("ic_writer"));
-				inq.setInquiryRef(rset.getInt("inquiry_ref"));
-				list.add(inq);
+				InquiryComment ic = new InquiryComment();
+				ic.setIcContent(rset.getString("ic_content"));
+				ic.setIcDate(rset.getString("ic_date"));
+				ic.setIcNo(rset.getInt("ic_no"));
+				ic.setIcRef(rset.getInt("ic_ref"));
+				ic.setIcWriter(rset.getString("ic_writer"));
+				ic.setInquiryRef(rset.getInt("inquiry_ref"));
+				list.add(ic);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -347,5 +347,26 @@ public class NoticeDao {
 			JDBCTemplate.close(rset);
 		}
 		return list;
+	}
+
+	public int insertInquiryComment(Connection conn, InquiryComment ic) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into inquiry_comment values(ic_seq.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, ic.getIcWriter());
+			pstmt.setString(2, ic.getIcContent());
+			pstmt.setInt(3, ic.getInquiryRef());
+			pstmt.setInt(4, ic.getIcRef());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 }

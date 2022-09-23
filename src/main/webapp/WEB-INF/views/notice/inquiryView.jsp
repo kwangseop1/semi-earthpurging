@@ -6,6 +6,7 @@
     
     <%
     	Inquiry inq = (Inquiry)request.getAttribute("inq");
+    	
     	ArrayList<InquiryComment> commentList = (ArrayList<InquiryComment>)request.getAttribute("commentList");
     %>
 <!DOCTYPE html>
@@ -69,9 +70,11 @@
 						<span class="material-icons">account_box</span>
 					</li>
 					<li>
-						<input type="hidden" name="icWiter" value="<%=m.getNickname() %>">
-						<input type="hidden" name="inquiryRef" value="<%=inq.getInquiry_no() %>">
-						<input type="hidden" name="icRef" value="0">
+						<input type="hidden" name="icWriter" value="<%=m.getNickname() %>">
+	
+						<input type="hidden" name="inquiryRef" value="<%=inq.getInquiry_no()%>">
+					
+					
 						<textarea class="input-form" name="icContent"></textarea>
 					</li>
 					<li>
@@ -96,7 +99,7 @@
 					<textarea name="icContent" class="input-form" style="min-height: 96px; display: none;"><%=ic.getIcContent() %></textarea>
 					<p class="comment-link">
 						<%if(m != null) {%>
-							<%if(m.getMemberId().equals(ic.getIcWriter())) {%>
+							<%if(m.getNickname().equals(ic.getIcWriter())) {%>
 								<a href="javascript:void(0)" onclick="modifyComment(this, <%=ic.getIcNo()%>,<%=inq.getInquiry_no()%>);">수정</a>
 								<a href="javascript:void(0)" onclick="deleteComment(this, <%=ic.getIcNo()%>,<%=inq.getInquiry_no()%>);">삭제</a>
 							<%} %>
