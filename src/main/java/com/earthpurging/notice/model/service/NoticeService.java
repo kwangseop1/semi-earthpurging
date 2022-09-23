@@ -3,7 +3,7 @@ package com.earthpurging.notice.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import org.apache.tomcat.util.bcel.classfile.JavaClass;
+//import org.apache.tomcat.util.bcel.classfile.JavaClass;
 
 import com.earthpurging.notice.model.dao.NoticeDao;
 import com.earthpurging.notice.model.vo.Inquiry;

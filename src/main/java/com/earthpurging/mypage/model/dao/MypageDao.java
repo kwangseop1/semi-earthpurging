@@ -1,5 +1,6 @@
 package com.earthpurging.mypage.model.dao;
 
+import com.earthpurging.member.model.vo.Member;
 import common.JDBCTemplate;
 
 import java.sql.Connection;
@@ -39,5 +40,75 @@ public class MypageDao {
         }
 
         return inquiryCntarr;
+    }
+
+    public int updateMyInfo(Connection conn, Member m, String beforeMemberId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        String query = "update member_tbl set member_id=?, member_name=?, nickname=?, member_email=?, member_addr=? where member_id=?";
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, m.getMemberId());
+            pstmt.setString(2, m.getMemberName());
+            pstmt.setString(3, m.getNickname());
+            pstmt.setString(4, m.getMemberEmail());
+            pstmt.setString(5, m.getMemberAddr());
+            pstmt.setString(6, beforeMemberId);
+
+            result = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(pstmt);
+        }
+        return result;
+    }
+
+    public int updateMyInfoWithPw(Connection conn, Member m, String beforeMemberId) {
+
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        String query = "update member_tbl set member_id=?, member_pw=?, member_name=?, nickname=?, member_email=?, member_addr=? where member_id=?";
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, m.getMemberId());
+            pstmt.setString(2, m.getMemberPw());
+            pstmt.setString(3, m.getMemberName());
+            pstmt.setString(4, m.getNickname());
+            pstmt.setString(5, m.getMemberEmail());
+            pstmt.setString(6, m.getMemberAddr());
+            pstmt.setString(7, beforeMemberId);
+
+            result = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(pstmt);
+        }
+        return result;
+    }
+
+    public int deleteMember(Connection conn, String memberId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        String query ="delete from member_tbl where member_id=?";
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, memberId);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(pstmt);
+        }
+        return result;
     }
 }

@@ -43,7 +43,7 @@
                 <li><a href="/mypage.do"><%=m.getNickname()%></a></li>
                 <li><a href="/logout.do">로그아웃</a></li>
                 <%} else {%>
-                <li><a href="/signinFrm.do">로그인/회원가입</a></li>
+                <li><a href="/common/signinFrm.jsp">로그인/회원가입</a></li>
                 <%}%>
             </ul>
         </div>
