@@ -15,18 +15,23 @@
 
 </head>
 <body>
-	<%@include file="/WEB-INF/views/common/header.jsp" %>
-	<form action="/signin.do" method="post">
-		<div class="input-wrap">
-			<label for="signId">아이디</label>
-			<input type="text" name="signId" class="signId" id="signId">
+	<div class="wrapper">
+		<%@include file="/WEB-INF/views/common/header.jsp" %>
+		<div class="page-content">
+			<form action="/signin.do" method="post">
+				<div class="input-wrap">
+					<label for="signId">아이디</label>
+					<input type="text" name="signId" class="signId" id="signId">
+				</div>
+				<div class="input-wrap">
+					<label for="signId">비밀번호</label>
+					<input type="password" name="signPw" class="signPw" id="signPw">
+				</div>
+				<button type="submit" class="submit-btn">로그인</button>
+			</form>
 		</div>
-		<div class="input-wrap">
-			<label for="signId">비밀번호</label>
-			<input type="password" name="signPw" class="signPw" id="signPw">
-		</div>
-		<button type="submit" class="submit-btn">로그인</button>
-	</form>
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+		<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	</div>
+
 </body>
 </html>

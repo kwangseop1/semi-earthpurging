@@ -25,12 +25,35 @@ public class MemberService {
 
 	public Member selectOneMember(String memberId) {
 		Connection conn = JDBCTemplate.getConnection();
+
 		Member m = dao.selectOneMember(conn, memberId);
 
 		JDBCTemplate.close(conn);
 
 		return m;
 	}
-	
-	
+
+
+	public boolean selectOneMemberWhereNickname(String nickname) {
+		Connection conn = JDBCTemplate.getConnection();
+		boolean result = dao.selectOneMemberWhereNickname(conn, nickname);
+
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	public int insertMember(Member m) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertMember(conn, m);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }

@@ -9,6 +9,7 @@ import com.earthpurging.member.model.vo.Member;
 
 import common.JDBCTemplate;
 
+
 public class MemberDao {
 
 	public Member selectOneMember(Connection conn, Member member) {
@@ -84,5 +85,57 @@ public class MemberDao {
 		}
 		return m;
 	}
-	
+
+
+	public boolean selectOneMemberWhereNickname(Connection conn, String nickname) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "select * from member_tbl where nickname=?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, nickname);
+			rset = pstmt.executeQuery();
+
+			result = rset.next();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int insertMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into member_tbl values(member_seq.nextval, ?, ?, ?, ?, ?, ?, 3, ?, ?, to_char(sysdate, 'yyyy-mm-dd'), 0, ?)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getMemberId());
+			pstmt.setString(2, m.getMemberPw());
+			pstmt.setString(3, m.getMemberName());
+			pstmt.setString(4, m.getMemberPhone());
+			pstmt.setString(5, m.getMemberAddr());
+			pstmt.setString(6, m.getMemberEmail());
+			pstmt.setString(7, m.getMemberBirth());
+			pstmt.setString(8,m.getNickname());
+			pstmt.setString(9, m.getMemberIntro());
+
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
 }

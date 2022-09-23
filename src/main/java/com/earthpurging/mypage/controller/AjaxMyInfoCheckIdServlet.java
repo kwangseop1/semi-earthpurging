@@ -1,25 +1,24 @@
 package com.earthpurging.mypage.controller;
 
+import com.earthpurging.member.model.service.MemberService;
 import com.earthpurging.member.model.vo.Member;
-import com.earthpurging.mypage.model.service.MypageService;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "Mypage", urlPatterns = {"/mypage.do"})
-public class MypageServlet extends HttpServlet {
+@WebServlet(name = "AjaxMyInfoCheckId", urlPatterns = {"/ajaxMyInfoCheckId.do"})
+public class AjaxMyInfoCheckIdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageServlet() {
+    public AjaxMyInfoCheckIdServlet() {
         super();
     }
 
@@ -28,28 +27,24 @@ public class MypageServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        String memberId = request.getParameter("memberId");
 
-        HttpSession session = request.getSession();
-        Member m = (Member) session.getAttribute("m");
-
-        MypageService service = new MypageService();
-        int[] inquiryCntarr = new int[2];
-        inquiryCntarr = service.selectInquiryCnt(m.getMemberName(), m.getMemberEmail());
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage.jsp");
-
-        request.setAttribute("inquiryWaiting", inquiryCntarr[0]);
-        request.setAttribute("inquiryComplete", inquiryCntarr[1]);
-
-        view.forward(request, response);
-	}
-
+        MemberService service = new MemberService();
+        Member m = service.selectOneMember(memberId);
+        PrintWriter out = response.getWriter();
+        if(m!=null) {
+            out.print(1);
+        }else {
+            out.print(0);
+        }
+    }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

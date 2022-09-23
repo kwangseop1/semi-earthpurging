@@ -1,6 +1,5 @@
 package com.earthpurging.mypage.controller;
 
-import com.earthpurging.member.model.vo.Member;
 import com.earthpurging.mypage.model.service.MypageService;
 
 import java.io.IOException;
@@ -10,16 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "Mypage", urlPatterns = {"/mypage.do"})
-public class MypageServlet extends HttpServlet {
+@WebServlet(name = "DeleteMember", urlPatterns = {"/deleteMember.do"})
+public class DeleteMemberServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageServlet() {
+    public DeleteMemberServlet() {
         super();
     }
 
@@ -27,29 +25,33 @@ public class MypageServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-
-        HttpSession session = request.getSession();
-        Member m = (Member) session.getAttribute("m");
+    	request.setCharacterEncoding("utf-8");
+        String memberId = request.getParameter("memberId");
 
         MypageService service = new MypageService();
-        int[] inquiryCntarr = new int[2];
-        inquiryCntarr = service.selectInquiryCnt(m.getMemberName(), m.getMemberEmail());
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage.jsp");
+        int result = service.deleteMember(memberId);
 
-        request.setAttribute("inquiryWaiting", inquiryCntarr[0]);
-        request.setAttribute("inquiryComplete", inquiryCntarr[1]);
-
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+        if(result>0) {
+            request.setAttribute("title", "탈퇴완료");
+            request.setAttribute("msg", "회원탈퇴가 완료되었습니다");
+            request.setAttribute("icon", "success");
+            request.setAttribute("loc", "/logout.do");
+        } else {
+            request.setAttribute("title", "탈퇴실패");
+            request.setAttribute("msg", "관리자에게 문의하세요");
+            request.setAttribute("icon", "error");
+            request.setAttribute("loc", "/mypageInfo.do");
+        }
         view.forward(request, response);
 	}
-
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }
