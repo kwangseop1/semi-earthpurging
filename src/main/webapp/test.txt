@@ -6,3 +6,4 @@ test sothatc
 test kwangseop33
 test ssn
 test kwangseop44
+test jmh
