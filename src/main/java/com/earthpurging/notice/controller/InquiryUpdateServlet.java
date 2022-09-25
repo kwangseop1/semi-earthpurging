@@ -53,6 +53,7 @@ public class InquiryUpdateServlet extends HttpServlet {
 		String inquiryEmail = mRequest.getParameter("inquiryEmail");
 		String inquiryTitle = mRequest.getParameter("inquiryTitle");
 		String status = mRequest.getParameter("status");
+		String inquiryContent = mRequest.getParameter("inquiryContent");
 		if(oldFilepath != null && status.equals("stay")) {
 			filepath = oldFilepath;
 		}
@@ -64,6 +65,7 @@ public class InquiryUpdateServlet extends HttpServlet {
 		inq.setInquiry_writer(inquirer);
 		inq.setInquiry_filepath(filepath);
 		inq.setInquiry_type(inquiryType);
+		inq.setInquiry_content(inquiryContent);
 		
 		NoticeService service = new NoticeService();
 		int result = service.updateInquiry(inq);

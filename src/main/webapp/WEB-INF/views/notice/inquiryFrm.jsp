@@ -33,7 +33,7 @@
 						<tr>
 							<th class="th">문의유형</th>
 							<td>
-								<select name="inquiry-type">
+								<select name="inquiry-type" class="inquiry-type">
 									<option name ="type" value="문의유형">문의유형</option>
 									<option name="donation" value="후원문의">후원문의</option>
 									<option name="quest" value="챌린지문의">챌린지문의</option>
@@ -44,25 +44,25 @@
 						<tr>
 							<th class="th">문의자 이름</th>
 							<td>
-								<input type="text" name="inquirer" value="이름">
+								<input type="text" name="inquirer" id="inqName">
 							</td>
 						</tr>
 						<tr>
 							<th class="th">문의자 이메일</th>
 							<td>
-								<input type="text" name="inquirerEmail" value="이메일">
+								<input type="text" name="inquirerEmail" id="inqEmail">
 							</td>
 						</tr>
 						<tr>
 							<th class="th">문의제목</th>
 							<td>
-								<input type="text" name="inquiryTitle" value="제목">
+								<input type="text" name="inquiryTitle" id="inqTitle">
 							</td>
 						</tr>
 						<tr>
-							<th class="th">문의내용</th>
+							<th class="th" id="inqContent">문의내용</th>
 							<td>
-								<textarea class="input-form" name="inquiryContent"></textarea>
+								<textarea class="input-form" name="inquiryContent" id="inqContent"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -72,14 +72,13 @@
 						<tr>
 							<td colspan="2">
 								<div>
-									<input type="checkbox" name="agree">개인정보 수집 및 이용동의 *
+									<input type="checkbox" name="agree" class="infoChk">개인정보 수집 및 이용동의 *
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<th colspan="2">
-								
-								<button type="submit" class="writeBtn">제출하기</buttone>
+								<button type="" class="btn writeBtn" id="writeBtn">제출하기</buttone>
 							</th>
 						</tr>	
 					</table>
@@ -87,6 +86,43 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		$("#writeBtn").on("click", function(){
+			if($(".inquiry-type").val() == '문의유형'){
+				alert("문의유형을 선택해주세요.");
+			}else {
+				
+			}		
+	
+			if($("#inqName").val() == ''){
+				alert("이름을 작성해주세요.");
+			}else {
+				if($("#inqEmail").val() == ''){
+					alert("이메일을 작성해주세요.");
+				}else {
+					if($("#inqTitle").val() == ''){
+						alert("문의 제목을 작성해주세요.");
+					}else {
+						if($("#inqContent").val() == ''){
+							alert("문의할 내용을 작성해주세요.");
+						}
+					}
+				}
+			}
+			
+			if($(".infoChk").is(":checked")){
+			  $('#writeBtn').prop("type", "submit");
+			}else{
+			  $('#writeBtn').prop("type", "button");
+			  alert("개인정보 수집이용에 동의해주세요.");
+			}
+		});
+		
+		
+		
+	</script>
+	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

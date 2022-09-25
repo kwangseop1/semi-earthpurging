@@ -36,7 +36,6 @@ public class InsertCommentServlet extends HttpServlet {
 		ic.setIcWriter(request.getParameter("icWriter"));
 		ic.setInquiryRef(Integer.parseInt(request.getParameter("inquiryRef")));
 		ic.setIcContent(request.getParameter("icContent"));
-		
 
 		
 		NoticeService service = new NoticeService();

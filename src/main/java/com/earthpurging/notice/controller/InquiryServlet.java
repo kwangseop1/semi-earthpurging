@@ -45,14 +45,14 @@ public class InquiryServlet extends HttpServlet {
 		String inquirerEmail = mRequest.getParameter("inquirerEmail");
 		String inquiryTiltle = mRequest.getParameter("inquiryTitle");
 		String inquiryContent = mRequest.getParameter("inquiryContent");
-		String filepath = mRequest.getFilesystemName("upfile");
+		String inquiryFilepath = mRequest.getParameter("upfile");
 		Inquiry inq = new Inquiry();
 		inq.setInquiry_type(inquiryType);
 		inq.setInquiry_writer(inquirer);
 		inq.setInquirer_email(inquirerEmail);
 		inq.setInquiry_title(inquiryTiltle);
 		inq.setInquiry_content(inquiryContent);
-		inq.setInquiry_filepath(filepath);
+		inq.setInquiry_filepath(inquiryFilepath);
 		NoticeService service = new NoticeService();
 		int result = service.insertInquiry(inq);
 		

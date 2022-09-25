@@ -47,7 +47,7 @@
 			<tr>
 				<%if(m != null && m.getMemberLevel() == 1) {%>
 				<th colspan="6">
-					<a class="btn updateBtn" href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
+					<a class="btn updateBtn1" href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
 					<button class="btn delBtn" onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button>
 				</th>
 				<%} %>

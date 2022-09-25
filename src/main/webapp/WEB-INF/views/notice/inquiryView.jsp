@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<th colspan="6">
-				<%if(m != null && m.getNickname().equals(inq.getInquiry_writer())) {%>
+				<%if(m != null && m.getMemberName().equals(inq.getInquiry_writer())) {%>
 					<a class="btn inq-updateBtn" href="/inquiryUpdateFrm.do?inquiryNo=<%=inq.getInquiry_no()%>">수정</a>
 					<button class="btn delBtn" onclick="inquiryDelete(<%=inq.getInquiry_no() %>);">삭제</button>
 				<%} %>
@@ -73,10 +73,9 @@
 					</li>
 					<li>
 						<input type="hidden" name="icWriter" value="<%=m.getNickname() %>">
-	
 						<input type="hidden" name="inquiryRef" value="<%=inq.getInquiry_no()%>">
-					
-					
+						
+						
 						<textarea class="input-form" name="icContent" id="comment-form"></textarea>
 					</li>
 					<li>

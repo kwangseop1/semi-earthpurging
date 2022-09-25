@@ -76,6 +76,18 @@
 	min-height: 300px;
     text-align: left;
 }
+.updateBtn{
+	width: 300px;
+}
+#inquiryUpdateFrm tr:nth-of-type(4) th{
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}
+#updateInquiryTitle{
+	width: 230px;
+}
+
 
 /*inquiryFrm*/
 .inquiry-title{
@@ -131,7 +143,7 @@
 }
 #inquiryWrite tr:nth-of-type(8)>th>button{
 	width: 300px;
-	height: 45px;
+	height: 55px;
 }
 #inquiryWrite tr:nth-of-type(5)>th{
 	

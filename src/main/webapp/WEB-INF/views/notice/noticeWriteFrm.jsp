@@ -25,7 +25,7 @@
 					<th class="th">작성자</th>
 					<td>
 					<%=m.getNickname() %>
-					<input type="hidden" name="noticeWriter" value="작성자이름1">
+					<input type="hidden" name="noticeWriter" value="<%=m.getNickname() %>">
 					</td>
 					<th class="th">첨부파일</th>
 					<td><input type="file" name="upfile"></td>
