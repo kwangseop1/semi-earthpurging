@@ -369,4 +369,43 @@ public class NoticeDao {
 		}
 		return result;
 	}
+
+	public int updateInquiryComment(Connection conn, InquiryComment ic) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update inquiry_comment set ic_content=? where ic_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, ic.getIcContent());
+			pstmt.setInt(2, ic.getIcNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteInquiryComment(Connection conn, int icNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete inquiry_comment where ic_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, icNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	
 }

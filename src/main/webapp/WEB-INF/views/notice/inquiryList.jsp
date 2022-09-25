@@ -24,11 +24,11 @@
 			<div class="navi-wrap">
 				<div><a href="/noticeList.do?reqPage=1">공지사항</a></div>
 				<div><a href="/FAQ.do">FAQ</a></div>
-				<div><a href="#">문의하기</a></div>
+				<div><a href="/inquiryFrm.do">문의하기</a></div>
 			</div>
 		</div>
 		<div class="inquiry-wrap">
-			<span>1:1문의</span>
+			<span><a href="/inquiryFrm.do">1:1문의</a></span>
 			<span><a href="/inquiryList.do?reqPage=1">문의사항 조회</a></span>
 		</div>
 		<table class="tbl" id="inquiry-tbl">

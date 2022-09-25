@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<table class="tbl" id="notice_tbl">
-			<tr class="tr-2">
+			<tr class="tr-2 tr-a" id="tr-2">
 				<th style="width: 10%">NO</th>
 				<th style="width: 45%">제목</th>
 				<th style="width: 15%">글쓴이</th>
@@ -57,7 +57,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<%if(m != null) {%>
+				<%if(m != null && m.getMemberLevel()==1) {%>
 				<td><a class="noticeWriteBtn" href="noticeWriteFrm.do">글쓰기</a></td>
 				<%} %>
 			</tr>
