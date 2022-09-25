@@ -30,7 +30,7 @@ public class AjaxCheckNicknameServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
 
         String nickname = request.getParameter("nickname");
-        System.out.println(nickname + "!!");
+
         MemberService service = new MemberService();
         boolean result = service.selectOneMemberWhereNickname(nickname);
 

@@ -1,9 +1,7 @@
 package com.earthpurging.member.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 import com.earthpurging.member.model.vo.Member;
 
@@ -130,6 +128,80 @@ public class MemberDao {
 			result = pstmt.executeUpdate();
 
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
+	public ArrayList<Member> selectMemberList(Connection conn, int start, int end) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList<Member>();
+		String query = "select * from (select rownum as rnum, n.* from(select * from member_tbl order by member_no desc)n) where rnum between ? and ?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rset = pstmt.executeQuery();
+
+			while(rset.next()) {
+				Member m = new Member();
+				m.setMemberNo(rset.getInt("member_no"));
+				m.setMemberId(rset.getString("member_id"));
+				m.setMemberName(rset.getString("member_name"));
+				m.setMemberPhone(rset.getString("member_phone"));
+				m.setMemberEmail(rset.getString("member_email"));
+				m.setMemberAddr(rset.getString("member_addr"));
+				list.add(m);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectMemberCount(Connection conn) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int totalCount = 0;
+		String query = "select count(*) as cnt from member_tbl";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			if(rset.next()) {
+				totalCount = rset.getInt("cnt");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+
+		return totalCount;
+	}
+
+	public int deleteMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from member_tbl where member_no=?";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

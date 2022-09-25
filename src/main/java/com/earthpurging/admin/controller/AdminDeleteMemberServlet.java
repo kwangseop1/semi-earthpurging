@@ -1,24 +1,24 @@
 package com.earthpurging.admin.controller;
 
 import com.earthpurging.member.model.service.MemberService;
-import com.earthpurging.member.model.vo.Member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "AjaxAdminCheckId", urlPatterns = {"/ajaxAdminCheckId.do"})
-public class AjaxAdminCheckIdServlet extends HttpServlet {
+@WebServlet(name = "AdminDeleteMember", urlPatterns = {"/adminDeleteMember.do"})
+public class AdminDeleteMemberServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdminCheckIdServlet() {
+    public AdminDeleteMemberServlet() {
         super();
     }
 
@@ -26,17 +26,17 @@ public class AjaxAdminCheckIdServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        String memberId = request.getParameter("memberId");
+    	request.setCharacterEncoding("utf-8");
+
+        int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 
         MemberService service = new MemberService();
-        Member m = service.selectOneMember(memberId);
+        int result = service.deleteMember(memberNo);
+        //service.deleteMember(memberNo);
+
         PrintWriter out = response.getWriter();
-        if(m!=null) {
-            out.print(1);
-        }else {
-            out.print(0);
-        }
+
+        out.print(result);
     }
 
     /**
