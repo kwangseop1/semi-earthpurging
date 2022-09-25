@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
-import org.apache.catalina.startup.ConnectorCreateRule;
+//import org.apache.catalina.startup.ConnectorCreateRule;
 
 import com.earthpurging.story.model.vo.Story;
 import com.earthpurging.story.model.vo.StoryComment;
