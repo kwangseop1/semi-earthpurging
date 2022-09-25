@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.tools.JavaFileManager.Location;
 
+import com.earthpurging.index.model.service.IndexService;
+import com.earthpurging.index.model.vo.ChellengeMemberData;
 import com.earthpurging.member.model.service.MemberService;
 import com.earthpurging.member.model.vo.Member;
 
@@ -46,15 +48,22 @@ public class SigninServlet extends HttpServlet {
 		Member m = service.selectOneMember(member);
 		
 		
+		
+		IndexService Cservice = new IndexService();
+		ChellengeMemberData cmd = Cservice.selectOneMember(member);
+		
+		
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(m != null) {
 			request.setAttribute("title", "로그인 성공");
 			request.setAttribute("msg", "환영합니다!");
 			request.setAttribute("icon", "success");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/mainPage.do");
 
 			HttpSession session = request.getSession();
 			session.setAttribute("m", m);
+			session.setAttribute("cmd", cmd);
 		}else {
 			//로그인 실패한 경우 -> 실패메세지 alert 후 메인페이지로 이동
 			request.setAttribute("title", "로그인 실패");
