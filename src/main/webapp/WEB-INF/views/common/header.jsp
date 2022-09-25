@@ -1,9 +1,12 @@
+<%@page import="com.earthpurging.index.model.vo.ChellengeMemberData"%>
 <%@page import="com.earthpurging.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
 		Member m = (Member)session.getAttribute("m");
+    
+    	ChellengeMemberData cmd = (ChellengeMemberData)session.getAttribute("cmd"); 
 	%>
     
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +20,10 @@
     <div class="header-container">
         <div class="header-top">
             <div class="header-logo">
-                <a href=""><img src="/img/common/logo-plogging.png" alt="plogging"></a>
+                <a href="/"><img src="/img/common/logo-plogging.png" alt="plogging"></a>
             </div>
             <div class="header-center">
-                <a href=""><img src="/img/common/img-main-title.png" alt=""></a>
+                <a href="/"><img src="/img/common/img-main-title.png" alt=""></a>
             </div>
             <div class="header-button">
                 <a href="" >지구쓰담 후원하기</a>
@@ -33,7 +36,7 @@
                 <li><a href="/storyList.do?reqPage=1">쓰담 스토리</a></li>
                 <li><a href="javascript:void(0);">쓰담 굿즈</a></li>
                 <li><a href="/noticeList.do?reqPage=1">쓰담 소식</a></li>
-                <li><a href="javascript:void(0);">진행중인 플로깅</a></li>
+                <li><a href="/plogging.do">진행중인 플로깅</a></li>
                 <%if(m!=null && m.getMemberLevel() == 1) {%>
                 <li><a href="/admin.do">관리자</a></li>
                 <%}%>
