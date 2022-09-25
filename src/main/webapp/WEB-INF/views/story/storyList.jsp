@@ -21,6 +21,15 @@
 		margin: 30px;
 		textalign : center;
 	}
+	.story-box{
+    width: 320px;
+    height : 460px;
+    padding: 0px;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+    
+	}
 
 </style>
 </head>
@@ -59,10 +68,23 @@
                         <div class="story-text">
                        		<a href="#상세페이지"><span><%=s.getStoryContent() %></span></a>
                         </div>
-                        <div class="pix-area">
-                            <a href="/storyUpdateFrm.do?storyNo=<%=s.getStoryNo()%>" class="btn bc2">수정</a>
-                            <a href="/storyDelete.do?storyNo=<%= s.getStoryNo()%> "class="btn bc2">삭제</a>
-                        </div>  
+                       
+						<% if(m != null) {%> 
+						    <% if(m.getMemberNo()== s.getStoryWriter()){ %>                  
+                        	<div class="pix-area">
+                            	<a href="/storyUpdateFrm.do?storyNo=<%=s.getStoryNo()%>" class="btn bc2">수정</a>
+                            	<a href="/storyDelete.do?storyNo=<%= s.getStoryNo()%> "class="btn bc2">삭제</a>
+                        	</div> 
+                        	<%}else if(m.getMemberLevel() == 1) { %>
+                        	<div class="pix-area">
+                            	<a href="/storyDelete.do?storyNo=<%= s.getStoryNo()%> "class="btn bc2">삭제</a>
+                        	</div> 
+                        	<%}else {%>
+                        		<div class="pix-area" display="hidden"></div>
+                        	<%} %>
+                        <%}else{ %>
+                        <div class="pix-area" display="hidden"></div>
+                        <%} %>
                 	</div>
       			<%} %>
                 </div>
