@@ -14,7 +14,7 @@
 <script src="/js/sweetalert.min.js"></script>
 </head>
 <body>
-	<div>
+	<div style="display:none;">
 		<div id="title"><%=title %></div>
 		<div id="msg"><%=msg %></div>
 		<div id="icon"><%=icon %></div>
