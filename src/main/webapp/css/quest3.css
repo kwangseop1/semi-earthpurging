@@ -189,7 +189,7 @@ input[type="checkbox"]{
 }
 
 .button_text_container {
-  width: 70%;
+  width: 50%;
   overflow: hidden;
   position: relative;
   font-size: 1.6em;
@@ -210,6 +210,7 @@ input[type="checkbox"]{
 }
 .button_su_inner{
   display: flex;
+  justify-content: center;
 } 
 .button_su:hover {
 border: 5px sol;
