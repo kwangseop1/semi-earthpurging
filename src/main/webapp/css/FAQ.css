@@ -189,3 +189,6 @@
 	font-weight: 700;
 	color: white;
 }
+.que-icon img:hover{
+	cursor: pointer;
+}

@@ -424,6 +424,23 @@ public class NoticeDao {
 		return result;
 	}
 
+	public int updateIsAnswer2(Connection conn, int inquiryNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update inquiry_tbl set is_answer='답변대기' where inquiry_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, inquiryNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 
 
 	
