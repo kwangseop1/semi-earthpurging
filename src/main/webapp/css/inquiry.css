@@ -30,6 +30,13 @@
 	font-size: 16px;
 	font-weight: 700;
 }
+#inquiry-tbl tr th{
+	background-color: #0078AA;
+}
+.inquiry-wrap span a:hover{
+	background-color: #0078AA;
+	cursor: pointer;
+}
 
 /*inquiryView*/
 .tbl th,
@@ -177,3 +184,12 @@
 	font-size: 35px;
 	font-weight: 900;
 }
+.inquiryFrm-wrap span a:hover{
+	background-color: #0078AA;
+	cursor: pointer;
+
+}
+
+
+
+
