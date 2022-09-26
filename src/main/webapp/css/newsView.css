@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/*noticeVeiw*/
+
 *{
 	margin: 0;
 	padding: 0;
@@ -45,5 +47,37 @@
 	height: 48px;
 	line-height: 10px;
 }
+
+
+/*updateNotice*/
+#noticeUpdateFrm{
+	margin: 0 auto;
+	width: 900px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.th{
+	background-color: #0078AA;
+	font-weight: 700;
+}
+.updateBtn{
+	background-color: #5AC5DB;
+	width: 300px;
+}
+.updateBtn:hover{
+	background-color: #0078AA;
+	cursor: pointer;
+}
+#noticeUpdateFrm tr:nth-of-type(4) th {
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}
+
+
+
+
+
+
 
 

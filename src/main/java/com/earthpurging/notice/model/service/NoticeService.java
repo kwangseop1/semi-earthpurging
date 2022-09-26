@@ -277,4 +277,37 @@ public class NoticeService {
 		return result;
 	}
 
+
+	public int updateInquiryComment(InquiryComment ic) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateInquiryComment(conn, ic);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int deleteInquiryComment(int icNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.deleteInquiryComment(conn, icNo);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	
+
+
+
+
+
 }

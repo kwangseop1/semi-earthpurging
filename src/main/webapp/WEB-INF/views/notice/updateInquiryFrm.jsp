@@ -18,7 +18,7 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	<div class="page-content" id="page-content">
-		<div class="page-title">문의사항 수정</div>
+		<div class="page-title" id="updateInquiryTitle">문의사항 수정</div>
 		<form action="/inquiryUpdate.do" method="post" enctype="multipart/form-data">
 			<table class="tbl" id="inquiryUpdateFrm">
 				<tr>
@@ -66,19 +66,18 @@
 					<td>
 						<input type="text" name="inquiryTitle" class="input-form" value="<%=inq.getInquiry_title() %>">
 					</td>
-					<input type="hidden" name="inquiryTitle" value="<%=inq.getInquiry_title() %>">
 					<th class="th">NO</th>
 					<td><%=inq.getInquiry_no() %></td>
 					<input type="hidden" name="inquiryNo" value="<%=inq.getInquiry_no() %>">
 				</tr>
 				<tr>
 					<td colspan="5">
-						<textarea name="inquiryContent" id="inquiry-content"><%=inq.getInquiry_content() %></textarea>
+						<textarea class="input-form" name="inquiryContent" id="inquiry-content"><%=inq.getInquiry_content() %></textarea>
 					</td>
 				</tr>
 				<tr>
-					<th colspan="5" class="th">
-						<button type="submit" class="updateBtn">수정완료</button>
+					<th colspan="5">
+						<button type="submit" class="btn updateBtn">수정완료</button>
 					</th>
 				</tr>
 			</table>

@@ -13,16 +13,16 @@ import com.earthpurging.notice.model.service.NoticeService;
 import com.earthpurging.notice.model.vo.InquiryComment;
 
 /**
- * Servlet implementation class InsertCommentServlet
+ * Servlet implementation class InquiryCommentUpdateServlet
  */
-@WebServlet(name = "InsertComment", urlPatterns = { "/insertComment.do" })
-public class InsertCommentServlet extends HttpServlet {
+@WebServlet(name = "InquiryCommentUpdate", urlPatterns = { "/inquiryCommentUpdate.do" })
+public class InquiryCommentUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCommentServlet() {
+    public InquiryCommentUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,26 +32,25 @@ public class InsertCommentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		int icNo = Integer.parseInt(request.getParameter("icNo"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+		String icContent = request.getParameter("icContent");
 		InquiryComment ic = new InquiryComment();
-		ic.setIcWriter(request.getParameter("icWriter"));
-		ic.setInquiryRef(Integer.parseInt(request.getParameter("inquiryRef")));
-		ic.setIcContent(request.getParameter("icContent"));
-
-		
-		NoticeService service = new NoticeService();
-		int result = service.insertInquiryComment(ic);
-		
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/common/msg.jsp");
+		ic.setIcNo(icNo);
+		ic.setIcContent(icContent);
+		NoticeService service =  new NoticeService();
+		int result = service.updateInquiryComment(ic);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
-	           request.setAttribute("title", "성공");
-	           request.setAttribute("msg", "댓글이 등록되었습니다");
-	           request.setAttribute("icon", "success");
-	        }else {
-	           request.setAttribute("title", "실패");
-	           request.setAttribute("msg", "등록 중 문제가 발생하였습니다");
-	           request.setAttribute("icon", "error");
-	        }
-		request.setAttribute("loc", "/inquiryView.do?inquiryNo="+ic.getInquiryRef());
+			request.setAttribute("title", "성공");
+			request.setAttribute("msg", "댓글이 수정되었습니다.");
+			request.setAttribute("icon", "success");
+		}else {
+			request.setAttribute("title", "실패");
+			request.setAttribute("msg", "댓글수정 실패");
+			request.setAttribute("icon", "error");
+		}
+		request.setAttribute("loc", "/inquiryView.do?inquiryNo="+inquiryNo);
 		view.forward(request, response);
 	}
 
