@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/default.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
 <!-- header -->
 <header>

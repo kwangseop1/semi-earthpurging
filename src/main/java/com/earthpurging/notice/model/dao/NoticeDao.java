@@ -353,13 +353,14 @@ public class NoticeDao {
 	public int insertInquiryComment(Connection conn, InquiryComment ic) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into inquiry_comment values(ic_seq.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
+		String query = "insert into inquiry_comment values(ic_seq.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?,null)";
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, ic.getIcWriter());
 			pstmt.setString(2, ic.getIcContent());
 			pstmt.setInt(3, ic.getInquiryRef());
-			pstmt.setInt(4, ic.getIcRef());
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -396,6 +397,23 @@ public class NoticeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, icNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateIsAnswer(Connection conn, int inquiryRef) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update inquiry_tbl set is_answer='답변완료' where inquiry_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, inquiryRef);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
