@@ -300,6 +300,33 @@ public class StoryDao {
 		return list;
 	}
 
+	public int selectMyStoryCount(Connection conn, int memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int totalCount = 0;
+		
+		String query ="select count(*) as cnt from story_TBL where story_writer=?";
+		
+		try {
+			pstmt= conn.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			rset= pstmt.executeQuery();
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return totalCount;
+	}
+
 
 
 }
