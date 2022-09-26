@@ -20,7 +20,7 @@
 	 <img src="/img/img/지구쓰담.png">
     </a>
      <%}else {%>
-     <a href="/signinFrm.do">
+     <a href="/common/signinFrm.jsp">
 	 <img src="/img/img/지구쓰담.png">
     </a>
       <%} %>
