@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.earthpurging.index.model.vo.ChellengeMemberData;
 import com.earthpurging.index.model.vo.ChellengeRank;
+import com.earthpurging.index.model.vo.Plogging;
 import com.earthpurging.member.model.vo.Member;
 
 import common.JDBCTemplate;
@@ -154,6 +155,31 @@ public class IndexDao {
 			JDBCTemplate.close(rset);
 		}
 		return all;
+	}
+
+	public int insertPlogging(Connection conn, Plogging p) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="INSERT INTO CREW_TBL VALUES(CREW_SEQ.NEXTVAL,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, p.getCrewName());
+			pstmt.setString(2, p.getCrewBirth());
+			pstmt.setString(3, p.getCrewPlace());
+			pstmt.setString(4, p.getCrewPhone());
+			pstmt.setInt(5, p.getMemberNo());
+			pstmt.setString(6, p.getCrewEmail());
+			pstmt.setString(7, p.getCrewKind());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
 	}
 	
 }

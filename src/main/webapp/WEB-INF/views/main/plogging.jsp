@@ -27,11 +27,11 @@
                 <div class="page-open-title">현재 진행 중인 플로깅</div>
                 <div class="open-left">
                     <div class="open-img"><img src="/img/index/ploggings_img1.jfif" alt=""></div>
-                    <a href="/ploggingDetail1.do"><div class="open-btn">참여하기</div></a>
+                    <a href="/plogging1.do"><div class="open-btn">참여하기</div></a>
                 </div>
                 <div class="open-right">
                     <div class="open-img"><img src="/img/index/ploggings_img2.png" alt=""></div>
-                    <a href="/ploggingDetail1.do"><div class="open-btn">참여하기</div></a>
+                    <a href="/plogging1.do"><div class="open-btn">참여하기</div></a>
                 </div>
             </div>
         </div>

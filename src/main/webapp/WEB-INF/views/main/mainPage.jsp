@@ -67,7 +67,7 @@
                         <div class="main-wrap-bottom">
                             <span>이대로 <br>
                             꾸준히 버리시겠습니까?</span><br>
-                            <span>-지구푸르깅-</span><br>
+                            <span>- 지구푸르깅 -</span><br>
                         </div>
                     </div>
                     <img src="/img/index/index_main_img.jpg" alt="">
@@ -105,19 +105,19 @@
             <!-- Todo section-->
             <section id="todo">
                 <div class="todo-container">
-                    <div class="todo-title">우리는 어떤 활동을 하나요?</div>
+                    <div class="todo-title">이달의 지구푸르깅 스토리</div>
                     <div class="todo-content">
                         <div class="todo-content-wrap">
                             <div class="todo-content-title">지구푸르깅과 함께하는 사람들의 이야기</div>
-                            <div class="todo-content-sub-title">우리의 일상으로<img src="/img/index/index_todo_content_line.png">지구의 일상을 지키다.</div>
-                            <div class="todo-content-left"><img src="/img/index/index_todo_content_todoleft.png" alt=""></div>
-                            <div class="todo-content-img"><img src="/img/index/people1.jpg" alt=""></div>
+                            <div class="todo-content-sub-title">우리의 일상으로<img src="/img/index/index_todo_content_line.png">한 지구의 일상을 지키다.</div>
+                            <div class="todo-content-left"></div>
+                            <div class="todo-content-img"><img src="/img/index/people3.png" alt=""></div>
                             <div class="todo-content-msg">
-                                <p class="name">인천 불빠따 진민호 님</p>
+                                <p class="name">KH 마법소녀 현주 님</p>
                                 <h4>하루를 살다가 쓰레기를 보면<br>
                                     지구가 생각나요.<br>
                                     평범한 하루가 간절한 지구에게<br>
-                                    힘이 되고 싶어요.
+                                    힘이 되고 싶어요!
                                 </h4>
                                 <p class="msg">"제가 쓰레기로 피해를 경험하지 않았잖아요.<br>
                                 감히 피해본 동물들의 마음을 헤아릴 수 없지만,<br>
@@ -128,7 +128,7 @@
                             <a href="#"><div class="todo-content-support">후원하기</div></a>
                             <div class="todo-fake-box"></div>
                             </div>
-                            <div class="todo-content-right"><img src="/img/index/index_todo_content_todoright.png" alt=""></div>
+                            <div class="todo-content-right"></div>
                         </div>
                     </div>
                     <a href="#ploggings" class="button style2 down anchored"></a>
@@ -210,7 +210,7 @@
                                         </div>
                                         <div class="swiper-slide-content-bottom"></div>
                                     </div>
-                                    <img src="/img/index/test1.jpg" alt="">
+                                    <img src="/img/index/test6.jpg" alt="">
                                 </div>
                         		<%} %>
                                 </div>
@@ -437,7 +437,7 @@ new Chart(document.getElementById("bar-chart"), {
       },
       title: {
         display: true,
-        text: '현재까지 모인 각 쓰레기의 총 개수',
+        text: '현재까지 모인 쓰레기의 총 개수',
         font:{
             size:50,
             weight: 'bold',
