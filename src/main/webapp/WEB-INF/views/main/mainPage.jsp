@@ -67,7 +67,7 @@
                         <div class="main-wrap-bottom">
                             <span>이대로 <br>
                             꾸준히 버리시겠습니까?</span><br>
-                            <span>-자라자라잔잔-</span><br>
+                            <span>-지구푸르깅-</span><br>
                         </div>
                     </div>
                     <img src="/img/index/index_main_img.jpg" alt="">
@@ -204,7 +204,7 @@
                                                 <div class="slide-content-name">전체 '<%=cr.getRank()%>'등<br><span><%=cr.getMemberName() %></span> 님</div>
                                                 <div class="slide-content-img">
                                                 <!-- 인물사진 -->
-                                                <img src="/img/index/people1.jpg" alt="">
+                                                <img src="/upload/chellenge/<%=cr.getPhotoPath()%>" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -312,7 +312,7 @@ $(document).ready(function() {
             var bottom_of_window = $(window).scrollTop() + $(window).height();
             
             if( bottom_of_window > bottom_of_element ){
-                $(this).animate({'opacity':'1','margin-left':'0px'},1000);
+                $(this).animate({'opacity':'1','margin-left':'0px'},900);
             }
             
         }); 
@@ -326,7 +326,7 @@ $(document).ready(function() {
             var bottom_of_window = $(window).scrollTop() + $(window).height();
             
             if( bottom_of_window > bottom_of_element ){
-                $(this).animate({'opacity':'1','margin-left':'0px'},1000);
+                $(this).animate({'opacity':'1','margin-left':'0px'},900);
             }
             
         }); 
@@ -340,7 +340,7 @@ $(document).ready(function() {
             var bottom_of_window = $(window).scrollTop() + $(window).height();
             
             if( bottom_of_window > bottom_of_element ){
-                $(this).animate({'opacity':'1','margin-left':'0px'},1000);
+                $(this).animate({'opacity':'1','margin-left':'0px'},900);
             }
             
         }); 

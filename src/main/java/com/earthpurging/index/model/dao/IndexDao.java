@@ -25,8 +25,9 @@ public class IndexDao {
 				+ "    SUM(QUEST_WRAPPER) 비닐,\r\n"
 				+ "    SUM(QUEST_TABACOO) 담배꽁초,\r\n"
 				+ "    SUM(QUEST_POINT) 총점수,\r\n"
-				+ "    MEMBER_NO\r\n"
-				+ "    FROM chellenge_list WHERE PERMISSION='Y' GROUP BY MEMBER_NO)n) ORDER BY 총점수 DESC)p WHERE ROWNUM BETWEEN 1 AND 5)X INNER JOIN (SELECT MEMBER_NO, MEMBER_ID 아이디, MEMBER_NAME 이름, NICKNAME 닉네임, MEMBER_INTRO 자기소개 FROM MEMBER_TBL)Y ON X.MEMBER_NO = Y.MEMBER_NO";
+				+ "    MEMBER_NO,\r\n"
+				+ "    (SELECT PHOTO_PATH FROM CHELLENGE_LIST WHERE QUEST_NO IN (SELECT MAX(QUEST_NO) AS QUEST_MAX FROM CHELLENGE_LIST CL2 WHERE PERMISSION='Y' AND CL2.MEMBER_NO = CL.MEMBER_NO)) AS PHOTO_PATH\r\n"
+				+ "    FROM chellenge_list CL WHERE PERMISSION='Y' GROUP BY MEMBER_NO)n) ORDER BY 총점수 DESC)p WHERE ROWNUM BETWEEN 1 AND 5)X INNER JOIN (SELECT M.MEMBER_NO, MEMBER_ID 아이디, MEMBER_NAME 이름, NICKNAME 닉네임, MEMBER_INTRO 자기소개 FROM MEMBER_TBL M)Y ON X.MEMBER_NO = Y.MEMBER_NO";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
@@ -41,6 +42,7 @@ public class IndexDao {
 				cr.setQuestTabacoo(rset.getInt("담배꽁초"));
 				cr.setQuestPoint(rset.getInt("총점수"));
 				cr.setMemberNo(rset.getInt("MEMBER_NO"));
+				cr.setPhotoPath(rset.getString("PHOTO_PATH"));
 				cr.setMemberId(rset.getString("아이디"));
 				cr.setMemberName(rset.getString("이름"));
 				cr.setNickName(rset.getString("닉네임"));
