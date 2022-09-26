@@ -261,6 +261,45 @@ public class StoryDao {
 		return list;
 	}
 
+	public ArrayList<Story> selectMyStoryList(Connection conn, int start, int end, int memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Story> list = new ArrayList<Story>();
+		
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, S.* FROM(SELECT M.NICKNAME, S.*FROM STORY_TBL S LEFT JOIN MEMBER_TBL M ON S.STORY_WRITER = M.MEMBER_NO where s.story_writer = ? ORDER BY STORY_NO DESC)S) WHERE RNUM BETWEEN ? AND ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			System.out.println(start);
+			System.out.println(end);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Story s = new Story(); 
+				s.setStoryNo(rset.getInt("story_no"));
+				s.setStoryContent(rset.getString("story_content"));
+				s.setStoryReadCount(rset.getInt("story_read_count"));
+				s.setStoryRegDate(rset.getString("story_reg_date"));
+				s.setPhotoPath(rset.getString("photo_path"));
+				s.setStoryWriter(rset.getInt("story_writer"));
+				s.setLikeCount(rset.getInt("like_count"));
+				s.setNickname(rset.getString("nickname"));
+				list.add(s);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		
+		return list;
+	}
+
 
 
 }
