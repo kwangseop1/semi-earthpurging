@@ -16,7 +16,7 @@
 	text-align: center;
 	padding: 60px 0px;
 }
-.tbl{
+#noticeWrite{
 	margin: 0 auto;
 	width: 900px;
     border-spacing: 0px;
@@ -34,4 +34,9 @@
 	width: 866px;
 	height: 60px;
 	border: none;
+	background-color: #5AC5DB;
+}
+.writeBtn:hover{
+	background-color: #0078AA;
+	cursor: pointer;
 }

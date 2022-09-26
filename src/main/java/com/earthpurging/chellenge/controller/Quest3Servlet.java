@@ -38,9 +38,6 @@ public class Quest3Servlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//값추출
 		
-		
-	
-		
 		//사진 경로
 		String root = getServletContext().getRealPath("/");//webapp폴더의 절대경로
 		String saveDirectory = root+"upload/chellenge";
@@ -74,7 +71,7 @@ public class Quest3Servlet extends HttpServlet {
 			request.setAttribute("msg", "쓰담 퀘스트 점수 등록 중 문제가 발생했습니다.");
 			request.setAttribute("icon", "error");
 		}
-		request.setAttribute("loc", "/WEB-INF/views/chellenge/quest3.do");
+		request.setAttribute("loc", "/quest3Frm.do");
 		view.forward(request, response);
 	}
 

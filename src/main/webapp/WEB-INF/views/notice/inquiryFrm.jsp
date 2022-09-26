@@ -13,64 +13,72 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	<div class="page-content">
-		<div class="page-title">쓰담소식</div>
+		<div class="page-title">쓰담<span class="page-title3">소식</span></div>
 		<div class="notice-navi-wrap">
 			<div class="navi-wrap">
-				<div><a href="#">공지사항</a></div>
+				<div><a href="/noticeList.do?reqPage=1">공지사항</a></div>
 				<div><a href="/FAQ.do">FAQ</a></div>
 				<div><a href="#">문의하기</a></div>
 			</div>
 		</div>
-		<div class="inquiry-wrap">
-			<span>1:1문의</span>
+		<div class="inquiryFrm-wrap">
+			<span><a href="#">1:1문의</a></span>
 			<span><a href="/inquiryList.do?reqPage=1">문의사항 조회</a></span>
 			<div class="one-to-one">
 				<div class="inquiry-title">
-					<div>이메일 문의하기</div>
 					<div>상품/배송 등 쇼핑 관련 문의는 고객센터에서 요청해주세요.</div>
 				</div>
 				<form action="/inquiry.do" method="post" enctype="multipart/form-data">
 					<table class="inquiry-tbl" id="inquiryWrite">
 						<tr>
-							<select name="inquiry-type">
-								<option  name ="type" value="문의유형">문의유형</option>
-								<option name="donation" value="후원문의">후원문의</option>
-								<option name="quest" value="챌린지문의">챌린지문의</option>
-								<option name="goods" value="상품문의">상품문의</option>
-							</select>
-						</tr>
-						<tr>
+							<th class="th">문의유형</th>
 							<td>
-								<input type="text" name="inquirer" value="이름">
+								<select name="inquiry-type" class="inquiry-type">
+									<option name ="type" value="문의유형">문의유형</option>
+									<option name="donation" value="후원문의">후원문의</option>
+									<option name="quest" value="챌린지문의">챌린지문의</option>
+									<option name="goods" value="상품문의">상품문의</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
+							<th class="th">문의자 이름</th>
 							<td>
-								<input type="text" name="inquirerEmail" value="이메일">
+								<input type="text" name="inquirer" id="inqName">
 							</td>
 						</tr>
 						<tr>
+							<th class="th">문의자 이메일</th>
 							<td>
-								<input type="text" name="inquiryTitle" value="제목">
+								<input type="text" name="inquirerEmail" id="inqEmail">
 							</td>
 						</tr>
 						<tr>
+							<th class="th">문의제목</th>
 							<td>
-								<textarea name="inquiryContent"></textarea>
+								<input type="text" name="inquiryTitle" id="inqTitle">
 							</td>
 						</tr>
 						<tr>
-							<th class="th">첨부파일</th>
-							<td><input type="file" name="upfile"></td>
-						</tr>
-						<tr>
+							<th class="th">문의내용</th>
 							<td>
-								<input type="checkbox" name="agree">개인정보 수집 및 이용동의 *
+								<textarea class="input-form" name="inquiryContent" id="inqContent"></textarea>
+							</td>
+						</tr>
+						
+							
+							<input type="hidden" name="upfile">
+						
+						<tr>
+							<td colspan="2">
+								<div>
+									<input type="checkbox" name="agree" class="infoChk">개인정보 수집 및 이용동의 *
+								</div>
 							</td>
 						</tr>
 						<tr>
-							<th>
-								<button type="submit" class="writeBtn">제출하기</buttone>
+							<th colspan="2">
+								<button type="" class="btn writeBtn" id="writeBtn">제출하기</buttone>
 							</th>
 						</tr>	
 					</table>
@@ -78,6 +86,44 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		$("#writeBtn").on("click", function(){
+			if($(".inquiry-type").val() == '문의유형'){
+				alert("문의유형을 선택해주세요.");
+			}else {
+				if($("#inqName").val() == ''){
+					alert("이름을 작성해주세요.");
+				}else {
+					if($("#inqEmail").val() == ''){
+						alert("이메일을 작성해주세요.");
+					}else {
+						if($("#inqTitle").val() == ''){
+							alert("문의 제목을 작성해주세요.");
+						}else {
+							if($("#inqContent").val() == ''){
+								alert("문의할 내용을 작성해주세요.");
+							}else {
+								
+							}
+						}
+					}
+				}
+				
+			}		
+			if($(".infoChk").is(":checked")){
+			  $('#writeBtn').prop("type", "submit");
+			}else{
+			  $('#writeBtn').prop("type", "button");
+			  alert("개인정보 수집이용에 동의해주세요.");
+			}
+	
+		});
+		
+		
+		
+	</script>
+	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

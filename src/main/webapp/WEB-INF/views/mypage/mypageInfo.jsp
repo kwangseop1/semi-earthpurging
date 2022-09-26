@@ -347,7 +347,6 @@
 
                     const userDelBtn = document.querySelector(".btn-user-del");
                     userDelBtn.addEventListener("click", function() {
-
                         swal({
                             title: "탈퇴하시겠습니까?",
                             text: "",
@@ -357,11 +356,11 @@
                             buttons: ["취소", "탈퇴하기"],
 
                         })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    window.location = "/deleteMember.do?memberId=<%=m.getMemberId()%> ";
-                                }
-                            });
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                window.location = "/deleteMember.do?memberId=<%=m.getMemberId()%> ";
+                            }
+                        });
                     })
 
         </script>

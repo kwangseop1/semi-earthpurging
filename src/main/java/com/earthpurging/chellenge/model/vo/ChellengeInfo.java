@@ -6,18 +6,20 @@ public class ChellengeInfo {
 	private String chellengePhone;
 	private String chellengeEmail;
 	private String chellengeAddr;
+	private int iMemberNO;
 	public ChellengeInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ChellengeInfo(int chellengeNo, String chellengeName, String chellengePhone, String chellengeEmail,
-			String chellengeAddr) {
+			String chellengeAddr, int iMemberNO) {
 		super();
 		this.chellengeNo = chellengeNo;
 		this.chellengeName = chellengeName;
 		this.chellengePhone = chellengePhone;
 		this.chellengeEmail = chellengeEmail;
 		this.chellengeAddr = chellengeAddr;
+		this.iMemberNO = iMemberNO;
 	}
 	public int getChellengeNo() {
 		return chellengeNo;
@@ -48,6 +50,12 @@ public class ChellengeInfo {
 	}
 	public void setChellengeAddr(String chellengeAddr) {
 		this.chellengeAddr = chellengeAddr;
+	}
+	public int getiMemberNO() {
+		return iMemberNO;
+	}
+	public void setiMemberNO(int iMemberNO) {
+		this.iMemberNO = iMemberNO;
 	}
 	
 }

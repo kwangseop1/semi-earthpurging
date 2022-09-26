@@ -10,8 +10,10 @@
 	display: inline;	
 }
 .question-icon{
+	height: 50px;	
+	padding-top: 10px;	
 	width: 900px;
-	background-color: green;	
+	background-color: green;
 }
 
 .question-icon>span:nth-of-type(1){
@@ -30,7 +32,6 @@
 }
 
 .question-content{
-	line-height: 60px;
 	height: 0px;
 	overflow: hidden;
 	transition-duration: 0.5s;
@@ -45,6 +46,8 @@
 	display: inline;	
 }
 .question-icon2{
+	height: 50px;	
+	padding-top: 10px;	
 	width: 900px;
 	background-color: green;	
 }
@@ -65,8 +68,124 @@
 }
 
 .question-content2{
-	line-height: 60px;
 	height: 0px;
 	overflow: hidden;
 	transition-duration: 0.5s;
+}
+
+.FAQ-wrap3{
+	width: 900px;
+	margin: 0 auto;
+}
+
+.FAQ-wrap3>ul>li{
+	display: inline;	
+}
+.question-icon3{
+	height: 50px;	
+	padding-top: 10px;	
+	width: 900px;
+	background-color: green;	
+}
+
+.question-icon3>span:nth-of-type(1){
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	color: white;
+	text-align: center;
+}
+
+.question-icon3>img{
+	width: 37px;
+	height: 37px;
+	float: right;
+}
+
+.question-content3{
+	height: 0px;
+	overflow: hidden;
+	transition-duration: 0.5s;
+}
+
+.FAQ-wrap4{
+	width: 900px;
+	margin: 0 auto;
+}
+
+.FAQ-wrap4>ul>li{
+	display: inline;	
+}
+.question-icon4{
+	height: 50px;	
+	padding-top: 10px;	
+	width: 900px;
+	background-color: green;	
+}
+
+.question-icon4>span:nth-of-type(1){
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	color: white;
+	text-align: center;
+}
+
+.question-icon4>img{
+	width: 37px;
+	height: 37px;
+	float: right;
+}
+
+.question-content4{
+	height: 0px;
+	overflow: hidden;
+	transition-duration: 0.5s;
+}
+
+.FAQ-wrap5{
+	width: 900px;
+	margin: 0 auto;
+}
+
+.FAQ-wrap5>ul>li{
+	display: inline;	
+}
+.question-icon5{
+	height: 50px;	
+	padding-top: 10px;	
+	width: 900px;
+	background-color: green;	
+}
+
+.question-icon5>span:nth-of-type(1){
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	color: white;
+	text-align: center;
+}
+
+.question-icon5>img{
+	width: 37px;
+	height: 37px;
+	float: right;
+}
+
+.question-content5{
+	height: 0px;
+	overflow: hidden;
+	transition-duration: 0.5s;
+}
+.page-title2{
+	color: #00aaad;
+	font-size: 35px;
+	font-weight: 900;
+}
+.faq-font{
+	font-weight: 700;
+	color: white;
 }

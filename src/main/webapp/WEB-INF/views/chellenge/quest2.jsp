@@ -41,6 +41,15 @@
   left: -35px;
   position: absolute;
 }
+.stepBth{
+	color: #fff;
+	font-family: DungGeunMo;
+}
+.button_su_inner{
+  display: flex;
+  justify-content: center;
+} 
+
 </style>
 </head>
 <body>
@@ -247,6 +256,7 @@
                     <div>
                       <label for="ex_filename1" class="sub_btn">이동기록</label>
                       <input type="file" id="ex_filename1" name="p_file1" class="upload-hidden">
+                        <input type="hidden" name="step" value="1">
                     </div>
                   </div>
                   <textarea readonly class="upload-name upload-name1 input_grey h165" placeholder="날짜, GPS지도, 이동거리가 담긴 캡쳐 이미지&#13;&#10;(1MByte 미만 권장)"></textarea>
@@ -297,14 +307,9 @@
             <div class="button_su">
               <span class="su_button_circle"></span>
               <div id="nextStep" class="button_su_inner">
-                <span class="button_text_container prevBtn">
-                  <span class="yellow">◀</span><span>STEP 01로 <br> 돌아가기</span>
-                </span>
-                <span class="button_text_container nextBtn">
-                <button type="submit">
+                <button type="submit" class="button_text_container nextBtn stepBth">
                   <span>STEP 02로 <br>넘어가기</span><span class="yellow">▶</span>
                 </button>
-                </span>
               </div>
             </div>
           </div>
