@@ -58,7 +58,17 @@ public class NoticeWriteServlet extends HttpServlet {
 		NoticeService service = new NoticeService();
 		int result = service.insertNotice(n);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+		if(result > 0) {
+			request.setAttribute("title", "성공");
+			request.setAttribute("msg", "공지사항이 등록되었습니다.");
+			request.setAttribute("icon", "success");
+		}else {
+			request.setAttribute("title", "실패");
+			request.setAttribute("msg", "공지사항 등록 중 문제가 발생했습니다.");
+			request.setAttribute("icon", "error");
+		}
+		request.setAttribute("loc", "/noticeList.do?reqPage=1");
 		view.forward(request, response);
 	}
 
