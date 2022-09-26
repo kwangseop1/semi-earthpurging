@@ -1,5 +1,9 @@
+<%@page import="com.earthpurging.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+	Member member = (Member)session.getAttribute("m");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +31,7 @@
 		<a class="kakao_btn" href="http://pf.kakao.com/_HxcUhb"
 			target="_blank"><img src="/img/img/kakao.png" alt="카카오톡"></a>;
 		<div class="top_btn1">
-			<a href="#"><img src="/img/img/plog_logo.png" class="plog_logo"></a>
+			<a href="/"><img src="/img/img/plog_logo.png" class="plog_logo"></a>
 		</div>
 		<div class="top_btn">
 			<p>
@@ -103,14 +107,14 @@
 				</div>
 				<div class="game_wrap">
 					<div class="game_top">
-						<img src="/img/img/game1.png" class="game1"> <img
-							src="/img/img/heart.png" class="game2">
+						<img src="/img/img/game1.png" class="game1"> 
+						<img src="/img/img/heart.png" class="game2">
 					</div>
 					<div class="game_text">
 						어느 도시에서 <br> 퀘스트를 수행하시겠습니까? <br> 원하는 장소를 클릭하세요!
 					</div>
 					<ul class="city_wrap">
-						<li><a href="/quest2.do?city=쓰담강릉">
+						<li><a href="/quest2Frm.do?city=쓰담강릉">
 								<div class="poly">
 									<img src="/img/img/game3.png" alt="삼각형">
 								</div>
@@ -122,7 +126,7 @@
 									<img src="/img/img/game2.png" alt="용사"> <span>x22</span>
 								</div>
 						</a></li>
-						<li><a href="/quest2.do?city=쓰담전주">
+						<li><a href="/quest2Frm.do?city=쓰담전주">
 								<div class="poly">
 									<img src="/img/img/game3.png" alt="삼각형">
 								</div>
@@ -134,7 +138,7 @@
 									<img src="/img/img/game2.png" alt="용사"> <span>x2</span>
 								</div>
 						</a></li>
-						<li><a href="/quest2.do?city=쓰담부산">
+						<li><a href="/quest2Frm.do?city=쓰담부산">
 								<div class="poly">
 									<img src="/img/img/game3.png" alt="삼각형">
 								</div>
@@ -146,7 +150,7 @@
 									<img src="/img/img/game2.png" alt="용사"> <span>x202</span>
 								</div>
 						</a></li>
-						<li><a href="/quest2.do?city=쓰담제주">
+						<li><a href="/quest2Frm.do?city=쓰담제주">
 								<div class="poly">
 									<img src="/img/img/game3.png" alt="삼각형">
 								</div>
@@ -440,14 +444,14 @@
                         <br>
                         궁금하다면? 눌러보세요!
                     </div>
-                    <a href="#" class="jeju1">
+                    <a href="/" class="jeju1">
                         <div class="jejuImg bellWrapper">
                             <img src="/img/img/jeju.png" alt="돌하르방" class="my-bell">
                         </div>
                         <div class="jeju_click">click!</div>
                     </a>
                 </div>
-                <a href="/quest2.do" class="run33">
+                <a href= "/quest2Frm.do?city=쓰담강릉" class="run33">
                     <div class="run_start">
                         <img src="/img/img/push2.png" class="run_img">
                         <img src="/img/img/push_btn2.png">

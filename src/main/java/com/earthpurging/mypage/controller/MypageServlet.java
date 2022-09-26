@@ -32,8 +32,6 @@ public class MypageServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Member m = (Member) session.getAttribute("m");
 
-        System.out.println(m.getMemberName());
-
         MypageService service = new MypageService();
         int[] inquiryCntarr = new int[2];
         inquiryCntarr = service.selectInquiryCnt(m.getMemberName(), m.getMemberEmail());

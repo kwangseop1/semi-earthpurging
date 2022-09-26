@@ -14,14 +14,14 @@ import com.earthpurging.chellenge.model.vo.Chellenge;
 /**
  * Servlet implementation class Quest2Servlet
  */
-@WebServlet(name = "Quest2", urlPatterns = { "/quest2.do" })
-public class Quest2Servlet extends HttpServlet {
+@WebServlet(name = "Quest2Frm", urlPatterns = { "/quest2Frm.do" })
+public class Quest2FrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Quest2Servlet() {
+    public Quest2FrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,10 +34,11 @@ public class Quest2Servlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//값추출 (값 주고)
 		String cityName = request.getParameter("city");
-		//비즈니스로직(setA)
-		request.setAttribute("cityName", cityName);
-		//결과처리(geta)
+		//비즈니스로직
+		//결과처리
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/chellenge/quest2.jsp");
+		request.setAttribute("cityName", cityName);
 		view.forward(request, response);
 		
 	}

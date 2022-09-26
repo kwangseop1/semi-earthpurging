@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.earthpurging.story.model.service.StoryService;
 import com.earthpurging.story.model.vo.Story;
+import com.earthpurging.story.model.vo.StoryViewData;
 import com.google.gson.Gson;
 
 /**
@@ -39,13 +40,13 @@ public class StoryViewServlet extends HttpServlet {
 		
 		//비즈니스 로직
 		StoryService service = new StoryService();
-		Story s = service.getStory(storyNo);
+		StoryViewData svd = service.viewStory(storyNo);
 		
 		//결과처리
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
-		gson.toJson(s,out);
+		gson.toJson(svd,out);
 		
 		
 		

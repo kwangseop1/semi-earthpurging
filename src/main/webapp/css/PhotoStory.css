@@ -78,6 +78,7 @@ font-family: 'NanumGothicExtraBold';
 }
 .story-box{
     width: 320px;
+    height : 500px;
     padding: 20px 0px;
     float: left;
     margin: 0 auto;
@@ -107,12 +108,13 @@ font-family: 'NanumGothicExtraBold';
 }
 /*좋아요부분*/
 .like-box{
-    width: 300px;
+    width: 280px;
     height: 40px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 .like-box>span{
     font-size: 30px;
@@ -198,6 +200,7 @@ font-family: 'NanumGothicExtraBold';
     text-align: center;
 }
 .modal-wrap{
+	margin-top:0;
     width: 550px;
     background-color: antiquewhite;
     box-sizing: border-box;

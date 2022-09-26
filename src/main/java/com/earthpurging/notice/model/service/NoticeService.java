@@ -3,7 +3,7 @@ package com.earthpurging.notice.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import org.apache.tomcat.util.bcel.classfile.JavaClass;
+//import org.apache.tomcat.util.bcel.classfile.JavaClass;
 
 import com.earthpurging.notice.model.dao.NoticeDao;
 import com.earthpurging.notice.model.vo.Inquiry;
@@ -276,5 +276,51 @@ public class NoticeService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+
+	public int updateInquiryComment(InquiryComment ic) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateInquiryComment(conn, ic);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int deleteInquiryComment(int icNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.deleteInquiryComment(conn, icNo);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public int updateIsAnswer(int inquiryRef) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateIsAnswer(conn, inquiryRef);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	
+
+
+
+
 
 }

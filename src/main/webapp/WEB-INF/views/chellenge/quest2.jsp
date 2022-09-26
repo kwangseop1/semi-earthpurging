@@ -1,5 +1,11 @@
+<%@page import="com.earthpurging.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+	<%
+	String city = (String)request.getAttribute("cityName");
+	Member member = (Member)session.getAttribute("m");
+	%>
 	
 <!DOCTYPE html>
 <html>
@@ -25,12 +31,32 @@
   background-size: contain;
   text-align: center;
   }
+  .flag_title::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 29px;
+  background: url(/img/flag.png) no-repeat center center;
+  background-size: 18px 29px;
+  left: -35px;
+  position: absolute;
+}
+.stepBth{
+	color: #fff;
+	font-family: DungGeunMo;
+}
+.button_su_inner{
+  display: flex;
+  justify-content: center;
+} 
+
 </style>
 </head>
 <body>
+
 <div id="quick">
     <a class="kakao_btn" href="http://pf.kakao.com/_HxcUhb" target="_blank"><img src="/img/img/kakao.png" alt="카카오톡"></a>
-    <div class="top_btn1"><a href="#"><img src="/img/img/plog_logo.png" class="plog_logo"></a></div>
+    <div class="top_btn1"><a href="/"><img src="/img/img/plog_logo.png" class="plog_logo"></a></div>
     <div class="top_btn"><p>↑<br>TOP</p></div>
   </div>
     <div id="step">
@@ -49,8 +75,10 @@
             </div>
           </div>
         </div>
-      <form id="inqForm" name="inqForm" method="post" action="#" enctype="multipart/form-data">
+        <!-- form <!--  -->
+      <form id="inqForm" name="inqForm" method="post" action="/quest3.do" enctype="multipart/form-data">
           <input type="hidden" name="step" value="1">
+           <input type="hidden" name="memberNO" value="<%=member.getMemberNo()%>">
         <div class="form_wrap">   
           <div class="form_title ffff">
             이렇게 <span class="yellow">줍<img src="/img/img/star.png" alt="별">줍</span>했다!
@@ -76,17 +104,50 @@
             </div>
   
             <div class="form_cont">
-              <select name="p_city" id="p_city" class="input_grey">
+            <%if (city.equals("쓰담강릉")){ %>
+             <select name="p_city" id="p_city" class="input_grey">
                 <option value="쓰담강릉" selected>쓰담강릉</option>
                 <option value="쓰담전주" >쓰담전주</option>
                 <option value="쓰담부산" >쓰담부산</option>
                 <option value="쓰담제주" >쓰담제주</option>
               </select>
+            <%} else if(city.equals("쓰담전주")) { %>
+               <select name="p_city" id="p_city" class="input_grey">
+                <option value="쓰담강릉" >쓰담강릉</option>
+                <option value="쓰담전주" selected>쓰담전주</option>
+                <option value="쓰담부산" >쓰담부산</option>
+                <option value="쓰담제주" >쓰담제주</option>
+              </select>
+            <%} else if(city.equals("쓰담부산")) {%>
+             <select name="p_city" id="p_city" class="input_grey">
+                <option value="쓰담강릉" >쓰담강릉</option>
+                <option value="쓰담전주" >쓰담전주</option>
+                <option value="쓰담부산" selected>쓰담부산</option>
+                <option value="쓰담제주" >쓰담제주</option>
+              </select>
+            <%} else if(city.equals("쓰담제주")) {%>
+             <select name="p_city" id="p_city" class="input_grey">
+                <option value="쓰담강릉" >쓰담강릉</option>
+                <option value="쓰담전주" >쓰담전주</option>
+                <option value="쓰담부산" >쓰담부산</option>
+                <option value="쓰담제주" selected >쓰담제주</option>
+              </select>
+            <%} else{%>
+             <select name="p_city" id="p_city" class="input_grey">
+                <option value="쓰담강릉" >쓰담강릉</option>
+                <option value="쓰담전주" >쓰담전주</option>
+                <option value="쓰담부산" >쓰담부산</option>
+                <option value="쓰담제주"  >쓰담제주</option>
+              </select>
+            <%} %>
+            
+             
+            
+            
+            
             </div>
   
-            <!-- 주소 검색 팝업 - 나머지 주소까지 팝업에서 찍히는 걸로 -->
             <div class="flex address_flex">
-            <!--   <button type="button" class="sub_btn" value="주소검색" onclick="goPopup()">주소검색</button>-->
               <div>쓰레기 데이터 수집을 위해 대략적 위치를 표기해주세요. <br>애매한 경우, 가장 가까운 랜드마크나 건물을 입력해주세요.</div>
             </div>
             <textarea id="p_addr" name="p_addr" class="input_grey h100"></textarea>
@@ -131,7 +192,7 @@
   
               <div class="get_item">
                 <img src="/img/img/icon4.png" alt="득템리스트">
-                <div class="fff">페트류(2점)</div>
+                <div class="fff">플라스틱류(2점)</div>
                 <div class="count_input">
                   <span class="minus">-</span>
                   <input type="text" value="0" id='p_item_4 ip' name='p_item_4' class="input_grey" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');">
@@ -140,8 +201,8 @@
               </div>
   
               <div class="get_item">
-                <img src="/img/img/icon8.png" alt="득템리스트">
-                <div class="fff">일반쓰레기류(1점)</div>
+                <img src="/img/img/icon9.png" alt="득템리스트">
+                <div class="fff">담배꽁초류(1점)</div>
                 <div class="count_input">
                   <span class="minus">-</span>
                   <input type="text" value="0" id='p_item_5 ip' name='p_item_5' class="input_grey" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');">
@@ -195,6 +256,7 @@
                     <div>
                       <label for="ex_filename1" class="sub_btn">이동기록</label>
                       <input type="file" id="ex_filename1" name="p_file1" class="upload-hidden">
+                        <input type="hidden" name="step" value="1">
                     </div>
                   </div>
                   <textarea readonly class="upload-name upload-name1 input_grey h165" placeholder="날짜, GPS지도, 이동거리가 담긴 캡쳐 이미지&#13;&#10;(1MByte 미만 권장)"></textarea>
@@ -217,7 +279,7 @@
                       <input type="file" id="ex_filename2" name="p_file2" class="upload-hidden">
                     </div>
                   </div>
-                  <textarea readonly class="upload-name upload-name2 input_grey h165" ㅎ></textarea>
+                  <textarea readonly class="upload-name upload-name2 input_grey h165"></textarea>
                 </div>
   
                 <div class="rt">
@@ -245,17 +307,15 @@
             <div class="button_su">
               <span class="su_button_circle"></span>
               <div id="nextStep" class="button_su_inner">
-                <span class="button_text_container prevBtn">
-                  <span class="yellow">◀</span><span>STEP 01로 <br> 돌아가기</span>
-                </span>
-                <span class="button_text_container nextBtn">
+                <button type="submit" class="button_text_container nextBtn stepBth">
                   <span>STEP 02로 <br>넘어가기</span><span class="yellow">▶</span>
-                </span>
+                </button>
               </div>
             </div>
           </div>
           <!--------------------------------------->
         </div>
+       
       </form>
       </div>
     </div>

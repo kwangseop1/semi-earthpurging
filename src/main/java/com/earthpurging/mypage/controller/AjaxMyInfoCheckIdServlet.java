@@ -1,4 +1,4 @@
-package com.earthpurging.admin.controller;
+package com.earthpurging.mypage.controller;
 
 import com.earthpurging.member.model.service.MemberService;
 import com.earthpurging.member.model.vo.Member;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "AjaxAdminCheckId", urlPatterns = {"/ajaxAdminCheckId.do"})
-public class AjaxAdminCheckIdServlet extends HttpServlet {
+@WebServlet(name = "AjaxMyInfoCheckId", urlPatterns = {"/ajaxMyInfoCheckId.do"})
+public class AjaxMyInfoCheckIdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdminCheckIdServlet() {
+    public AjaxMyInfoCheckIdServlet() {
         super();
     }
 

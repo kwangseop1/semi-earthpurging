@@ -10,6 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/newsWrite.css">
+    <link rel="stylesheet" href="/css/news.css">
+    <link rel="stylesheet" href="/css/newsView.css">
+    
+    
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -18,7 +25,7 @@
 		<form action="/noticeUpdate.do" method="post" enctype="multipart/form-data">
 			<table class="tbl" id="noticeUpdateFrm">
 				<tr>
-					<th>제목</th>
+					<th class="th">제목</th>
 					<td>
 						<input type="hidden" name="noticeNo" class="input-form" value="<%=n.getNoticeNo()%>">	
 						<!-- 기존파일을 지웠는지 체크용도 -->
@@ -27,7 +34,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th>첨부파일</th>
+					<th class="th">첨부파일</th>
 					<td>
 						<%if(n.getFilepath() != null) {%>
 						<img src="/img/file.png" width="16px" class="delFile">
@@ -42,14 +49,14 @@
 					</td>
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="th">내용</th>
 					<td>
-						<textarea name="noticeContent"><%=n.getNoticeContent() %></textarea>
+						<textarea name="noticeContent" class="input-form" ><%=n.getNoticeContent() %></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2">
-						<button type="submit" class="updateBtn">수정완료</button>
+						<button type="submit" class="btn updateBtn">수정완료</button>
 					</th>
 				</tr>
 			</table>

@@ -37,18 +37,12 @@
 				<td colspan="3"><%=inq.getInquiry_writer() %></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="th">첨부파일</th>
-				<td colspan="2">
-				<%if(inq.getInquiry_filepath() != null) {%>
-				<img src="/img/file.png" width="16px">
-				<a href="/inquiryfileDown.do?inquiryNo=<%=inq.getInquiry_no() %>"><%=inq.getInquiry_filepath() %></a>				
-				<%} %>
-				</td>
+				
 				<th class="th">작성일</th>
-				<td><%=inq.getInquiry_enroll_date() %></td>
+				<td colspan="4"><%=inq.getInquiry_enroll_date() %></td>
 			</tr>
 			<tr>
-				<th><%=inq.getInquirer_email() %></th>
+				<th colspan="6"><%=inq.getInquirer_email() %></th>
 			</tr>
 			<tr>
 				<td colspan="6">
@@ -56,29 +50,29 @@
 				</td>
 			</tr>
 			<tr>
-				<th>
-					<a class="inq-updateBtn" href="/inquiryUpdateFrm.do?inquiryNo=<%=inq.getInquiry_no()%>">수정</a>
+				<th colspan="6">
+				<%if(m != null && m.getMemberName().equals(inq.getInquiry_writer())) {%>
+					<a class="btn inq-updateBtn" href="/inquiryUpdateFrm.do?inquiryNo=<%=inq.getInquiry_no()%>">수정</a>
 					<button class="btn delBtn" onclick="inquiryDelete(<%=inq.getInquiry_no() %>);">삭제</button>
+				<%} %>
 				</th>
 			</tr>
 		</table>
-		<%if(m!=null) {%>
+		<%if(m!=null && m.getMemberLevel()==1) {%>
 		<div class="inputCommentBox">
 			<form action="/insertComment.do" method="post">
 				<ul>
 					<li>
-						<span class="material-icons">account_box</span>
+						<div>RECOMMENT</div>
 					</li>
 					<li>
 						<input type="hidden" name="icWriter" value="<%=m.getNickname() %>">
-	
 						<input type="hidden" name="inquiryRef" value="<%=inq.getInquiry_no()%>">
-					
-					
-						<textarea class="input-form" name="icContent"></textarea>
+						
+						<textarea class="input-form" name="icContent" id="comment-form"></textarea>
 					</li>
 					<li>
-						<button type="submit" class="btn">등록</button>
+						<button type="submit" class="btn commentBtn">등록</button>
 					</li>
 				</ul>
 			</form>
@@ -93,7 +87,7 @@
 				<li>
 					<p class="comment-info">
 						<span><%=ic.getIcWriter() %></span>
-						<span><%=ic.getIcDate() %></span>
+						<span name="icDate"><%=ic.getIcDate() %></span>
 					</p>
 					<p class="comment-content"><%=ic.getIcContent() %></p>
 					<textarea name="icContent" class="input-form" style="min-height: 96px; display: none;"><%=ic.getIcContent() %></textarea>
@@ -116,55 +110,55 @@
 				location.href="/inquiryDelete.do?inquiryNo="+inquiryNo;
 			}
 		}
-		function modifyComment(obj,ncNo,noticeNo) {
+		function modifyComment(obj,icNo,inquiryNo) {
 			$(obj).parent().prev().show(); //textarea 화면에보여줌
 			$(obj).parent().prev().prev().hide(); //내용을 보여주던 p태그
 			//수정 -> 수정완료
 			$(obj).text("수정완료");
-			$(obj).attr("onclick","modifyComplete(this,"+ncNo+","+noticeNo+")");
+			$(obj).attr("onclick","modifyComplete(this,"+icNo+","+inquiryNo+")");
 			//삭제 -> 수정취소
 			$(obj).next().text("수정취소");
-			$(obj).next().attr("onclick","modifyCancel(this,"+ncNo+","+noticeNo+")");
+			$(obj).next().attr("onclick","modifyCancel(this,"+icNo+","+inquiryNo+")");
 			//답글달기버튼 숨김
 			$(obj).next().next().hide();
 		}
-		function modifyCancel(obj,ncNo,noticeNo) {
+		function modifyCancel(obj,icNo,inquiryNo) {
 			$(obj).parent().prev().hide(); //textarea 숨김
 			$(obj).parent().prev().prev().show(); //기존 댓글 보여줌
 			//수정완료 -> 수정
 			$(obj).prev().text("수정");
-			$(obj).prev().attr("onclick","modifyComment(this,"+ncNo+","+noticeNo+")");
+			$(obj).prev().attr("onclick","modifyComment(this,"+icNo+","+inquiryNo+")");
 			//수정취소 -> 삭제
 			$(obj).text("삭제");
-			$(obj).attr("onclick","deleteComment(this,"+ncNo+","+noticeNo+")");
+			$(obj).attr("onclick","deleteComment(this,"+icNo+","+inquiryNo+")");
 			//답글달기 버튼 보여줌
 			$(obj).next().show();
 		}
-		function modifyComplete(obj,ncNo,noticeNo){
+		function modifyComplete(obj,icNo,inquiryNo){
 			//form태그를 생성해서 전송
 			//1. form태그생성
-			const form = $("<form action='/noticeCommentUpdate.do' method='post'></form>");
+			const form = $("<form action='/inquiryCommentUpdate.do' method='post'></form>");
 			//2. input태그 생성(ncNo)
-			const ncInput = $("<input type='text' name='ncNo'>");
+			const icInput = $("<input type='text' name='icNo'>");
 			//ncNo값 세팅
-			ncInput.val(ncNo);
+			icInput.val(icNo);
 			//form태그에 추가
-			form.append(ncInput);
+			form.append(icInput);
 			//3. input태그 생성(noticeNo)
-			const noticeInput = $("<input type='text' name='noticeNo'>");
-			noticeInput.val(noticeNo);
-			form.append(noticeInput);
+			const inquiryInput = $("<input type='text' name='inquiryNo'>");
+			inquiryInput.val(inquiryNo);
+			form.append(inquiryInput);
 			//4. textarea
-			const ncContent = $(obj).parent().prev();
-			form.append(ncContent);
+			const icContent = $(obj).parent().prev();
+			form.append(icContent);
 			//body태그에 생성한 form태그를 추가
 			$("body").append(form);
 			//form태그 전송
 			form.submit();
 		}
-		function deleteComment(obj,ncNo,noticeNo) {
+		function deleteComment(obj,icNo,inquiryNo) {
 			if(confirm("댓글을 삭제하시겠습니까?")){
-				location.href="/deleteNoticeComment.do?ncNo="+ncNo+"&noticeNo="+noticeNo;
+				location.href="/deleteInquiryComment.do?icNo="+icNo+"&inquiryNo="+inquiryNo;
 			}
 		}
 	</script>

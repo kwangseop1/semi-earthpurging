@@ -1,12 +1,15 @@
 package com.earthpurging.story.model.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
-import org.apache.catalina.startup.ConnectorCreateRule;
+//import org.apache.catalina.startup.ConnectorCreateRule;
 
 import com.earthpurging.story.model.vo.Story;
+import com.earthpurging.story.model.vo.StoryComment;
 import com.earthpurging.story.model.vo.StoryPageData;
+import com.earthpurging.story.model.vo.StoryViewData;
 
 import common.JDBCTemplate;
 import com.earthpurging.story.model.dao.StoryDao;
@@ -23,7 +26,7 @@ public class StoryService {
 	public StoryPageData selectStoryList(int reqPage) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int numPerPage = 15;
+		int numPerPage = 12;
 		
 		int end = numPerPage*reqPage; // 마지막에 들어갈 숫자
 		int start = end - numPerPage + 1;
@@ -146,6 +149,44 @@ public class StoryService {
 		return s;
 	}
 
+	public StoryViewData viewStory(int storyNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateReadCount(conn,storyNo);
+		
+		if(result>0) {
+			//조회수 업데이트 성공
+			JDBCTemplate.commit(conn);
+			Story s = dao.selectOneStory(conn,storyNo);
+			//댓글도 조회
+			ArrayList<StoryComment> commentList = dao.selectStoryCommentList(conn,storyNo);
+			StoryViewData svd = new StoryViewData(s,commentList);
+			JDBCTemplate.close(conn);
+			return svd;
+		}else {
+			JDBCTemplate.rollback(conn);
+			JDBCTemplate.close(conn);
+			return null;
+		}
+		
+	}
+	
+
+	public ArrayList<StoryComment> insertStoryComment(StoryComment sc) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.insertStoryComment(conn,sc);
+		ArrayList<StoryComment> commentList = null;
+		if(result>0){
+			commentList = dao.selectStoryCommentList(conn,sc.getStoryRef());
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return commentList;
+	}
+
+	
 	
 	
 }

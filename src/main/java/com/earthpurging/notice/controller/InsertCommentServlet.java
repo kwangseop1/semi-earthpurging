@@ -33,14 +33,17 @@ public class InsertCommentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		InquiryComment ic = new InquiryComment();
+		
 		ic.setIcWriter(request.getParameter("icWriter"));
 		ic.setInquiryRef(Integer.parseInt(request.getParameter("inquiryRef")));
 		ic.setIcContent(request.getParameter("icContent"));
 		
-
+		int inquiryRef = Integer.parseInt(request.getParameter("inquiryRef"));
+		System.out.println(inquiryRef);
 		
 		NoticeService service = new NoticeService();
 		int result = service.insertInquiryComment(ic);
+		int result1 = service.updateIsAnswer(inquiryRef);
 		
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/common/msg.jsp");
 		if(result>0) {
