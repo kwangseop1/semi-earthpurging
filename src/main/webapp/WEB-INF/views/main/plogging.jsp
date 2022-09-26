@@ -31,7 +31,7 @@
                 </div>
                 <div class="open-right">
                     <div class="open-img"><img src="/img/index/ploggings_img2.png" alt=""></div>
-                    <a href="/plogging1.do"><div class="open-btn">참여하기</div></a>
+                    <a href="/plogging2.do"><div class="open-btn">참여하기</div></a>
                 </div>
             </div>
         </div>
