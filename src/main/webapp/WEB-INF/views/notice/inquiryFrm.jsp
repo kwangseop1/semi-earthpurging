@@ -60,15 +60,15 @@
 							</td>
 						</tr>
 						<tr>
-							<th class="th" id="inqContent">문의내용</th>
+							<th class="th">문의내용</th>
 							<td>
 								<textarea class="input-form" name="inquiryContent" id="inqContent"></textarea>
 							</td>
 						</tr>
-						<tr>
-							<th class="th">첨부파일</th>
-							<td><input type="file" name="upfile"></td>
-						</tr>
+						
+							
+							<input type="hidden" name="upfile">
+						
 						<tr>
 							<td colspan="2">
 								<div>
@@ -92,31 +92,32 @@
 			if($(".inquiry-type").val() == '문의유형'){
 				alert("문의유형을 선택해주세요.");
 			}else {
-				
-			}		
-	
-			if($("#inqName").val() == ''){
-				alert("이름을 작성해주세요.");
-			}else {
-				if($("#inqEmail").val() == ''){
-					alert("이메일을 작성해주세요.");
+				if($("#inqName").val() == ''){
+					alert("이름을 작성해주세요.");
 				}else {
-					if($("#inqTitle").val() == ''){
-						alert("문의 제목을 작성해주세요.");
+					if($("#inqEmail").val() == ''){
+						alert("이메일을 작성해주세요.");
 					}else {
-						if($("#inqContent").val() == ''){
-							alert("문의할 내용을 작성해주세요.");
+						if($("#inqTitle").val() == ''){
+							alert("문의 제목을 작성해주세요.");
+						}else {
+							if($("#inqContent").val() == ''){
+								alert("문의할 내용을 작성해주세요.");
+							}else {
+								
+							}
 						}
 					}
 				}
-			}
-			
+				
+			}		
 			if($(".infoChk").is(":checked")){
 			  $('#writeBtn').prop("type", "submit");
 			}else{
 			  $('#writeBtn').prop("type", "button");
 			  alert("개인정보 수집이용에 동의해주세요.");
 			}
+	
 		});
 		
 		

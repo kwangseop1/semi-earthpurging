@@ -148,16 +148,29 @@
 #inquiryWrite tr:nth-of-type(5)>th{
 	
 }
-#inquiryWrite tr:nth-of-type(7) td{
+#inquiryWrite tr:nth-of-type(7) th{
 	border-left: none;
 	border-right: none;
 	border-bottom: none;
+	border-top: none;
 }
 #inquiryWrite tr:nth-of-type(8) th{
 	border-left: none;
 	border-right: none;
 	border-bottom: none;
 	border-top: none;
+}
+#inquiryWrite tr:nth-of-type(6) td{
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}
+
+
+
+#inquiryWrite tr:nth-of-type(6) td>div{
+	height: 40px;
+	padding-top: 20px;
 }
 .page-title3{
 	color: #00aaad;
