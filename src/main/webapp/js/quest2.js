@@ -78,41 +78,48 @@ var fileTarget1 = $('.filebox1 .upload-hidden');
   $('.prevBtn').on("click",function(){
     bool = confirm("step1로 돌아가시겠습니까?");
     if(bool){
-      location.href="quest1.jsp";
+      location.href="/quest1Frm.do";
     }else{
       return false;
     };
   });
   /*step1 조건 확인 후 step2로 넘어가기 */
   $('.nextBtn').on("click",function(){
+	bool = confirm("step2로 넘어가시겠습니까?");
     if($("#start-date").val()===''){
       alert('줍줍한 날짜를 선택해주세요');
-      return;
+      bool = false;
+      return bool;
     }
     if($("#p_addr").val()===''){
       alert('줍줍한 위치를 표시해주세요');
-      return;
+       bool = false;
+      return bool;
     }
     if($("#p_addr").val()===''){
       alert('줍줍한 위치를 표시해주세요');
-      return;
+       bool = false;
+      return bool;
     }
     if($("#ex_filename1").val()===''){
       alert('이동기록 이미지를 첨부해주세요');
-      return;
+       bool = false;
+      return bool;
     }
     if($("#ex_filename2").val()===''){
       alert('인증샷 이미지를 첨부해주세요');
-      return;
+       bool = false;
+      return bool;
     }
     if($("#p_memo").val()===''){
       alert('인증샷 이미지를 첨부해주세요');
-      return;
+      bool = false;
+      return bool;
     }
 
-    bool = confirm("step2로 넘어가시겠습니까?");
+    
     if(bool){
-      location.href="/quest3Frm.do";
+		 location.href="/quest3Frm.do";
     }else{
       return false;
     };

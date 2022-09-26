@@ -1,5 +1,10 @@
+<%@page import="com.earthpurging.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%
+	Member member = (Member)session.getAttribute("m");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +16,16 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+.stepBth{
+	color: #fff;
+	font-family: DungGeunMo;
+}
+.button_su_inner{
+  display: flex;
+  justify-content: center;
+} 
+</style>
 </head>
 <body>
 <div id="quick">
@@ -35,8 +50,10 @@
           </div>
         </div>
       </div>
-        <form id="inqForm" name="inqForm" method="post" action="#" >
+      <!-- form -->
+        <form id="inqForm" name="inqForm" method="post" action="/quest4.do" >
             <input type="hidden" name="step" value="2">
+           <input type="hidden" name="memberNO" value="<%=member.getMemberNo()%>">
       <div class="form_wrap">
         <div class="form_title">
           힙한<span class="yellow"><img src="/img/img/star.png" alt="별"></span>지구인의 정보
@@ -112,12 +129,9 @@
           <div class="button_su">
             <span class="su_button_circle"></span>
             <div id="endStep" class="button_su_inner">
-              <span class="button_text_container prevBtn">
-                <span class="yellow">◀</span><span>step2로<br>돌아가기</span>
-              </span>
-              <span class="button_text_container nextBtn">
+              <button  type="submit" class="button_text_container nextBtn stepBth" >
                 <span>쓰담기록<br>제출하기</span><span class="yellow">▶</span>
-              </span>
+              </button>
             </div>
           </div>
 

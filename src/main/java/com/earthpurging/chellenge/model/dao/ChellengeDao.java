@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.earthpurging.chellenge.model.vo.Chellenge;import com.earthpurging.member.model.vo.Member;
+import com.earthpurging.chellenge.model.vo.Chellenge;
+import com.earthpurging.chellenge.model.vo.ChellengeInfo;
+import com.earthpurging.member.model.vo.Member;
 
 import common.JDBCTemplate;
 
@@ -36,6 +38,26 @@ public class ChellengeDao {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertChellenge(Connection conn, ChellengeInfo ci) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into chellengeinfo values(CHELLENGEINFO_SEQ.nextval,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, ci.getChellengeName());
+			pstmt.setString(2, ci.getChellengePhone());
+			pstmt.setString(3, ci.getChellengeEmail());
+			pstmt.setString(4, ci.getChellengeAddr());
+			pstmt.setInt(5, ci.getiMemberNO());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(pstmt);

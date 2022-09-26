@@ -14,14 +14,14 @@ import com.earthpurging.chellenge.model.vo.Chellenge;
 /**
  * Servlet implementation class Quest2Servlet
  */
-@WebServlet(name = "Quest2", urlPatterns = { "/quest2.do" })
-public class Quest2Servlet extends HttpServlet {
+@WebServlet(name = "Quest2Frm", urlPatterns = { "/quest2Frm.do" })
+public class Quest2FrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Quest2Servlet() {
+    public Quest2FrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
