@@ -317,6 +317,19 @@ public class NoticeService {
 	}
 
 
+	public int updateIsAnswer2(int inquiryNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateIsAnswer2(conn, inquiryNo);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
 	
 
 

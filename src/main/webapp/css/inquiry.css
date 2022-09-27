@@ -19,6 +19,9 @@
 	width: 900px;
 	margin: 0 auto;
 }
+#inquiry-tbl tr th{
+	font-weight: 700;
+}
 .inquiry-wrap>span>a{
 	display: inline-block;
 	width: 120px;
