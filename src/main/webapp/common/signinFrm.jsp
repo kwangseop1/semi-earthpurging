@@ -38,7 +38,7 @@
                                 <input type="checkbox" id="saveid" name="saveid" value="saveid">아이디저장
                             </label>
                             --%>
-                            <a class="findIdPw" href="#">아이디/비밀번호 찾기</a>
+<%--                            <a class="findIdPw" href="#">아이디/비밀번호 찾기</a>--%>
                         </div>
                         <div class="loginBtnWrap">
                             <input type="submit" name="loginBtn" class="bc55 br-none"
@@ -46,7 +46,7 @@
                         </div>
                         <div>회원이 아니시라면,지금 회원에 가입하세요.</div>
                         <div class="signUpBtnWrap">
-                            <a href="/common/signupFrm.jsp" class="btn bc55 br-none">회원가입</a>
+                            <a href="/common/signupFrm.jsp" class="btn bc5 br-none">회원가입</a>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,11 @@
-
+<%@ page import="com.earthpurging.chellenge.model.vo.ChallengeSumData" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%
+    ChallengeSumData csd = (ChallengeSumData) request.getAttribute("csd");
+    int waitingCnt = (int) request.getAttribute("waitingCnt");
+    int donationTotal = (int) request.getAttribute("donationTotal");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,15 +31,15 @@
                         <div class="info-box w-60">
                             <h4>총 후원금액</h4>
                             <div class="flex flex-align-enter">
-                                <p class="total-donation">12,320,050</p>
+                                <p class="total-donation"><%=donationTotal%></p>
                             </div>
                         </div>
                         <div class="info-box w-40">
                             <h5>대기중인 문의</h5>
                             <div class="flex flex-evenly flex-align-end">
-                                <dl class="flex flex-col"><dt class="fc-2">0</dt><dd>문의대기</dd></dl>
+                                <dl class="flex flex-col"><dt class="fc-2"><%=waitingCnt%></dt><dd>문의대기</dd></dl>
                                 <!-- <dl class="flex flex-col"><dt class="fc-5">0</dt><dd>답변완료</dd></dl> -->
-                                <a href="" class="btn bc2">답변하러가기 </a>
+                                <a href="/inquiryList.do?reqPage=1" class="btn bc2">답변하러가기 </a>
                             </div>
                         </div>
                         <div class="info-box w-100 plogging-result">
@@ -42,27 +47,27 @@
                             <ul class="challenge-result-list flex">
                                 <li>
                                     <img src="img/img-recycle-can.png" alt="캔">
-                                    <span>10</span>
+                                    <span><%=csd.getCanSum()%></span>
                                 </li>
                                 <li>
                                     <img src="img/img-recycle-plastic.png" alt="플라스틱">
-                                    <span>12</span>
+                                    <span><%=csd.getPlaSum()%></span>
                                 </li>
                                 <li>
                                     <img src="img/img-recycle-glass.png" alt="유리">
-                                    <span>21</span>
+                                    <span><%=csd.getGlassSum()%></span>
                                 </li>
                                 <li>
                                     <img src="img/img-recycle-paper.png" alt="종이">
-                                    <span>22</span>
+                                    <span><%=csd.getPaperSum()%></span>
                                 </li>
                                 <li>
                                     <img src="img/img-recycle-plastic2.png" alt="비닐류">
-                                    <span>18</span>
+                                    <span><%=csd.getWrapperSum()%></span>
                                 </li>
                                 <li>
                                     <img src="img/img-trash-tobacco.png" alt="담배꽁초">
-                                    <span>12</span>
+                                    <span><%=csd.getTobaccoSum()%></span>
                                 </li>
                             </ul>
                         </div>
@@ -84,6 +89,11 @@
     <!-- // content -->
     <%@include file="/WEB-INF/views/common/footer.jsp" %>
     <script src="/js/sideMenu.js"></script>
+    <script>
+        const totalDonation = <%=donationTotal%>;
+        document.querySelector(".total-donation").textContent = totalDonation.toLocaleString("ko-KR");
+
+    </script>
 </div>
 </body>
 </html>

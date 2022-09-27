@@ -1,6 +1,13 @@
-
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.earthpurging.donation.model.vo.Donation" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%
+    ArrayList<Donation> list = (ArrayList<Donation>) request.getAttribute("list");
+    int totalDonation = (int) request.getAttribute("totalDonation");
+    DecimalFormat formatter = new DecimalFormat("###,###");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,33 +50,21 @@
                             <th>후원금액</th>
                             <th></th>
                         </tr>
+                        <%for(Donation d : list) {%>
                         <tr class="">
-                            <td>김광섭</td>
-                            <td>kks22</td>
-                            <td>010-0523-1234</td>
-                            <td class="td-amount">100,000</td>
-                            <td><button type="button" class="btn bc4">후원 취소</td>
+                            <td><%=d.getDonationName()%></td>
+                            <td><%=d.getMemberId()%></td>
+                            <td><%=d.getDonationPhone()%></td>
+                            <td class="td-amount"><%=formatter.format(d.getDonationAmount())%></td>
+                            <td><button type="button" class="btn bc4">취소</button></td>
                         </tr>
-                        <tr class="">
-                            <td>김광섭</td>
-                            <td>kks22</td>
-                            <td>010-0523-1234</td>
-                            <td class="td-amount">100,000</td>
-                            <td><button type="button" class="btn bc4">후원 취소</td>
-                        </tr>
-                        <tr class="">
-                            <td>김광섭</td>
-                            <td>kks22</td>
-                            <td>010-0523-1234</td>
-                            <td class="td-amount">100,000</td>
-                            <td><button type="button" class="btn bc4">후원 취소</td>
-                        </tr>
+                        <%}%>
 
                         <tr class="row-total">
                             <td colspan="4">
                                 <dl>
                                     <dt>총 금액</dt>
-                                    <dd>300,000 <span>원</span></dd>
+                                    <dd><%=formatter.format(totalDonation)%> <span>원</span></dd>
                                 </dl>
                             </td>
                             <td></td>

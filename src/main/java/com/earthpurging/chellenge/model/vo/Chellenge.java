@@ -15,6 +15,7 @@ public class Chellenge {
 	private char Permission; // 포인트 승인 여부 (y/n)
 	private String memberThink; //동료들에게 남길 한마디
 	private int qMemberNo;
+	private String nickname;
 	public Chellenge() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -122,5 +123,12 @@ public class Chellenge {
 	public void setqMemberNo(int qMemberNo) {
 		this.qMemberNo = qMemberNo;
 	}
-	
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 }

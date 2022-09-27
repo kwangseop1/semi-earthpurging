@@ -1,12 +1,14 @@
 package com.earthpurging.mypage.model.dao;
 
 import com.earthpurging.member.model.vo.Member;
+import com.earthpurging.mypage.model.vo.Crew;
 import common.JDBCTemplate;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MypageDao {
     public int[] selectInquiryCnt(Connection conn, String memberName, String memberEmail) {
@@ -109,6 +111,62 @@ public class MypageDao {
         } finally {
             JDBCTemplate.close(pstmt);
         }
+        return result;
+    }
+
+    public ArrayList<Crew> selectCrew(Connection conn, int memberNo) {
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+        ArrayList<Crew> list = new ArrayList<Crew>();
+        String query = "select c.* from crew_tbl c left join member_tbl m on c.member_no = m.member_no where c.member_no=?";
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, memberNo);
+
+            rset = pstmt.executeQuery();
+
+            while(rset.next()) {
+                Crew c = new Crew();
+                c.setCrewNo(rset.getInt(1));
+                c.setCrewName(rset.getString(2));
+                c.setCrewBirth(rset.getString(3));
+                c.setCrewPlace(rset.getString(4));
+                c.setCrewPhone(rset.getString(5));
+                c.setMemberNo(rset.getInt(6));
+                c.setCrewEmail(rset.getString(7));
+                c.setCrewKind(rset.getString(8));
+
+                list.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(rset);
+            JDBCTemplate.close(pstmt);
+        }
+
+        return list;
+    }
+
+    public int cancelCrew(Connection conn, int crewNo) {
+
+        PreparedStatement pstmt = null;
+        int result = 0;
+        String query = "delete from crew_tbl where crew_no=?";
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, crewNo);
+
+            result = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(pstmt);
+        }
+
         return result;
     }
 }

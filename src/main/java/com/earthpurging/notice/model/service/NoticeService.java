@@ -329,10 +329,14 @@ public class NoticeService {
 		return result;
 	}
 
+	public int selectAnswerWaitingCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int waitingCnt = dao.selectAnswerWaitingCount(conn);
 
-	
+		JDBCTemplate.close(conn);
 
-
+		return waitingCnt;
+	}
 
 
 

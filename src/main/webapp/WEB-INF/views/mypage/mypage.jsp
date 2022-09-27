@@ -75,11 +75,11 @@
                             </div>
                             <div class="info-box w-100 progging">
                                 <h3>지구를 <span class="fc-1">푸르게</span> 하는 <span>플로깅</span></h3>
-                                <a href="javascript:void(0)" class="btn bc6 br-none">참여하기</a>
+                                <a href="/plogging.do" class="btn bc6 br-none">참여하기</a>
                             </div>
                             <div class="info-box w-100 donation">
                                 <h3>지구를 위해 후원해주세요</h3>
-                                <a href="javascript:void(0)" class="btn bc6 br-none">후원하기</a>
+                                <a href="/common/donation.jsp" class="btn bc6 br-none">후원하기</a>
                             </div>
                         </div>
 

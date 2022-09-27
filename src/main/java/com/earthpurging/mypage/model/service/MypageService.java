@@ -2,9 +2,11 @@ package com.earthpurging.mypage.model.service;
 
 import com.earthpurging.member.model.vo.Member;
 import com.earthpurging.mypage.model.dao.MypageDao;
+import com.earthpurging.mypage.model.vo.Crew;
 import common.JDBCTemplate;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class MypageService {
 
@@ -57,6 +59,28 @@ public class MypageService {
         }
         JDBCTemplate.close(conn);
 
+        return result;
+    }
+
+    public ArrayList<Crew> selectCrew(int memberNo) {
+        Connection conn = JDBCTemplate.getConnection();
+        ArrayList<Crew> list = dao.selectCrew(conn, memberNo);
+
+        JDBCTemplate.close(conn);
+        return list;
+    }
+
+    public int cancelCrew(int crewNo) {
+        Connection conn = JDBCTemplate.getConnection();
+        int result = dao.cancelCrew(conn, crewNo);
+
+        if(result>0) {
+            JDBCTemplate.commit(conn);
+        } else {
+            JDBCTemplate.rollback(conn);
+        }
+
+        JDBCTemplate.close(conn);
         return result;
     }
 }
