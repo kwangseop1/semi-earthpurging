@@ -26,7 +26,7 @@
             <div class="page-open-content">
                 <div class="page-open-title">현재 진행 중인 플로깅</div>
                 <div class="open-left">
-                    <div class="open-img"><img src="/img/index/ploggings_img1.jfif" alt=""></div>
+                    <div class="open-img"><img src="/img/common/plogging.jpg" alt=""></div>
                     <a href="/ploggingDetail1.do"><div class="open-btn">참여하기</div></a>
                 </div>
                 <div class="open-right">
