@@ -1,9 +1,11 @@
-package com.earthpurging.admin.controller;
+package com.earthpurging.member.controller;
 
 import com.earthpurging.chellenge.model.service.ChellengeService;
-import com.earthpurging.chellenge.model.vo.ChallengePageData;
+import com.earthpurging.member.model.service.MemberService;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.reflect.Member;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,14 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "AdminChallenge", urlPatterns = {"/adminChallenge.do"})
-public class AdminChallengeServlet extends HttpServlet {
+@WebServlet(name = "AjaxUpdateMemberPoint", urlPatterns = {"/ajaxUpdateMemberPoint.do"})
+public class AjaxUpdateMemberPointServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminChallengeServlet() {
+    public AjaxUpdateMemberPointServlet() {
         super();
     }
 
@@ -26,21 +28,23 @@ public class AdminChallengeServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
         request.setCharacterEncoding("utf-8");
+        int questNo = Integer.parseInt(request.getParameter("questNo"));
 
-        int reqPage = Integer.parseInt(request.getParameter("reqPage"));
+        ChellengeService clgService = new ChellengeService();
+        int result = clgService.updateChallengePermission(questNo);
 
-        ChellengeService service = new ChellengeService();
-        ChallengePageData cpd = service.selectChallengeList(reqPage);
+        //RequestDispatcher view = request.getRequestDispatcher("/adminChallenge.do?reqPage=1");
+        //PrintWriter out = response.getWriter();
+        if(result>0) {
+            MemberService mService = new MemberService();
+            result = mService.updateMemberTotalPoint(questNo);
+        }
 
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/adminChallenge.jsp");
-
-        request.setAttribute("list", cpd.getList());
-        request.setAttribute("pageNavi", cpd.getPageNavi());
-
-        view.forward(request, response);
+        PrintWriter out = response.getWriter();
+        out.print(result);
     }
-
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

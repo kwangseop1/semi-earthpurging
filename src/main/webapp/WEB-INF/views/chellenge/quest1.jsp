@@ -44,7 +44,7 @@
 		<section id="main_top">
 			<div class="wrapper">
 				<div class="logo_wrap">
-					<a href="#" class="logoImg"> <img src="/img/img/plog_logo.png"
+					<a href="/" class="logoImg"> <img src="/img/img/plog_logo.png"
 						alt="플로깅" id="plogImg">
 					</a> <a href="#" target="_blank" class="logoImg"> <span> <img
 							src="/img/img/logo2.png" alt="지구쓰담" id="logoImg">

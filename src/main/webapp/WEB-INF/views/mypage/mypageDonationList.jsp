@@ -1,5 +1,12 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.earthpurging.donation.model.vo.Donation" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%
+    ArrayList<Donation> list = (ArrayList<Donation>) request.getAttribute("list");
+    DecimalFormat formatter = new DecimalFormat("###,###");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,27 +42,18 @@
                                 <th>후원금액</th>
                                 <!-- <th></th> -->
                             </tr>
+                            <%for(Donation d : list){%>
+                            <%if(d.getMemberId().equals(m.getMemberId())){%>
                             <tr class="">
-                                <td>2022.01.01</td>
-                                <td>정기후원</td>
-                                <td>김광섭</td>
-                                <td>카드결제</td>
-                                <td>100,000</td>
+                                <td><%=d.getPayDate()%></td>
+                                <td>일시후원</td>
+                                <td><%=d.getDonationName()%></td>
+                                <td>-</td>
+                                <td><%=formatter.format(d.getDonationAmount())%></td>
                             </tr>
-                            <tr class="">
-                                <td>2022.01.01</td>
-                                <td>정기후원</td>
-                                <td>김광섭</td>
-                                <td>카드결제</td>
-                                <td>100,000</td>
-                            </tr>
-                            <tr class="">
-                                <td>2022.01.01</td>
-                                <td>정기후원</td>
-                                <td>김광섭</td>
-                                <td>카드결제</td>
-                                <td>100,000</td>
-                            </tr>
+                            <%}%>
+                            <%}%>
+
                             </tbody>
                         </table>
                     </div>

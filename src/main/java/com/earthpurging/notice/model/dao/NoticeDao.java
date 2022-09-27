@@ -443,5 +443,27 @@ public class NoticeDao {
 
 
 
-	
+	public int selectAnswerWaitingCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int waitingCnt = 0;
+		String query = "select count(*) as waitng_cnt from INQUIRY_TBL where IS_ANSWER='답변대기'";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				waitingCnt = rset.getInt(1);
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return waitingCnt;
+	}
+
 }

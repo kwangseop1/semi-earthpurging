@@ -528,6 +528,9 @@
     border-bottom:1px solid #ccc;
     padding:20px 10px;
 }
+.challenge-list > li.is-active{
+    background:var(--main-bg-color2);
+}
 .challenge-list > li h5 {
     margin-bottom:15px;
     font-size:18px;

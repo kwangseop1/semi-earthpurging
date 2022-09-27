@@ -1,6 +1,10 @@
-
+<%@ page import="com.earthpurging.mypage.model.vo.Crew" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%
+    ArrayList<Crew> list = (ArrayList<Crew>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +27,26 @@
                     </div>
                     <div class="content-body">
                         <ul class="plogging-list">
+                            <%for(Crew c : list) {%>
+                            <li>
+                                <h3><%=c.getCrewKind()%></h3>
+                                <div>
+                                    <dl><dt>신청일자</dt><dd>-</dd></dl>
+                                    <dl>
+                                        <dt>장소</dt>
+                                        <dd><%=c.getCrewPlace()%></dd>
+                                    </dl>
+                                    <div class="btn-group">
+                                        <a href="/plogging.do" class="btn bc3">자세히 보기</a>
+                                        <a href="/cancelPlogging.do?crewNo=<%=c.getCrewNo()%>" class="btn bc4">신청취소</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="/img/img-mypage-plogging.png" alt="">
+                                </div>
+                            </li>
+                            <%}%>
+                            <%--
                             <li>
                                 <h3>힙한 지구인의 달리기</h3>
                                 <div>
@@ -40,23 +64,7 @@
                                     <img src="img/img-plogging-01.png" alt="">
                                 </div>
                             </li>
-                            <li>
-                                <h3>힙한 지구인의 달리기</h3>
-                                <div>
-                                    <dl><dt>신청일자</dt><dd>2022-10-10</dd></dl>
-                                    <dl>
-                                        <dt>장소</dt>
-                                        <dd>당산 kh정보교육원 스타벅스 앞</dd>
-                                    </dl>
-                                    <div class="btn-group">
-                                        <a href="" class="btn bc3">자세히 보기</a>
-                                        <a href="" class="btn bc4">신청취소</a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <img src="img/img-plogging-01.png" alt="">
-                                </div>
-                            </li>
+                            --%>
                         </ul>
                     </div>
 

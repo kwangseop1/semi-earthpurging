@@ -26,7 +26,7 @@
                 <a href="/"><img src="/img/common/img-main-title.png" alt=""></a>
             </div>
             <div class="header-button">
-                <a href="" >지구쓰담 후원하기</a>
+                <a href="/common/donation.jsp" >지구쓰담 후원하기</a>
             </div>
         </div>
         <div class="header-bottom">

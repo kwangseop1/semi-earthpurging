@@ -1,28 +1,23 @@
 package com.earthpurging.mypage.controller;
 
-import com.earthpurging.donation.model.service.DonationService;
-import com.earthpurging.donation.model.vo.Donation;
-import com.earthpurging.member.model.vo.Member;
 import com.earthpurging.mypage.model.service.MypageService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "MypageDonationList", urlPatterns = {"/mypageDonationList.do"})
-public class MypageDonationListServlet extends HttpServlet {
+@WebServlet(name = "CancelPlogging", urlPatterns = {"/cancelPlogging.do"})
+public class CancelPloggingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageDonationListServlet() {
+    public CancelPloggingServlet() {
         super();
     }
 
@@ -31,18 +26,23 @@ public class MypageDonationListServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("utf-8");
-//        HttpSession session = request.getSession();
-//        Member m = (Member) session.getAttribute("m");
-//        int memberNo = m.getMemberNo();
 
-        DonationService service = new DonationService();
-        ArrayList<Donation> list = service.selectAllDonation();
+        int crewNo = Integer.parseInt(request.getParameter("crewNo"));
 
+        MypageService service = new MypageService();
+        int result = service.cancelCrew(crewNo);
 
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypageDonationList.jsp");
-
-        request.setAttribute("list", list);
-
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+        if(result>0) {
+            request.setAttribute("title", "취소완료");
+            request.setAttribute("msg", "플로깅신청이 취소되었습니다.");
+            request.setAttribute("icon", "success");
+        } else {
+            request.setAttribute("title", "취소실패");
+            request.setAttribute("msg", "관리자에게 문의하세요");
+            request.setAttribute("icon", "error");
+        }
+        request.setAttribute("loc", "/mypagePloggingList.do");
         view.forward(request, response);
 	}
 
