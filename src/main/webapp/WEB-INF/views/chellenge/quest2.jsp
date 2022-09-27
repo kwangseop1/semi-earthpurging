@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <!-- form <!--  -->
+        <!-- form  -->
       <form id="inqForm" name="inqForm" method="post" action="/quest3.do" enctype="multipart/form-data">
           <input type="hidden" name="step" value="1">
            <input type="hidden" name="memberNO" value="<%=member.getMemberNo()%>">

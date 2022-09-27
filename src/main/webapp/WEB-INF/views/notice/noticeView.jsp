@@ -13,10 +13,13 @@
 <title>Insert title here</title>
 
     <link rel="stylesheet" href="/css/newsView.css">
+	<style>
+		#noticeView th{background:var(--point-color-blue)}
+	</style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
-	<div class="page-content">
+	<div class="page-content" style="margin:20px auto 100px";>
 		<div class="page-title">쓰담 공지사항</div>
 		<table class="tbl" id="noticeView">
 			<tr>

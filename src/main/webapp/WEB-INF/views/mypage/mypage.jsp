@@ -36,7 +36,7 @@
                                     STONE
                                 <%}else if(m.getTotalPoint() < 50){%>
                                     BRONZE
-                                <%} else if (m.getTotalPoint() < 100){%>
+                                <%} else if (m.getTotalPoint() < 10000){%>
                                     GOLD
                                 <%}%>
                                 등급

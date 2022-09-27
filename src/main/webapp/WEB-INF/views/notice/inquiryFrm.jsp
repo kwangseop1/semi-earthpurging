@@ -78,7 +78,7 @@
 						</tr>
 						<tr>
 							<th colspan="2">
-								<button type="" class="btn writeBtn" id="writeBtn">제출하기</buttone>
+								<button type="" class="btn writeBtn" id="writeBtn">제출하기</button>
 							</th>
 						</tr>	
 					</table>
@@ -88,28 +88,38 @@
 	</div>
 	
 	<script>
-		$("#writeBtn").on("click", function(){
+		$("#writeBtn").on("click", function(e){
 			if($(".inquiry-type").val() == '문의유형'){
 				alert("문의유형을 선택해주세요.");
+				e.preventDefault();
+				return;
 			}else {
 				if($("#inqName").val() == ''){
 					alert("이름을 작성해주세요.");
+					e.preventDefault();
+					return;
 				}else {
 					if($("#inqEmail").val() == ''){
 						alert("이메일을 작성해주세요.");
+						e.preventDefault();
+						return;
 					}else {
 						if($("#inqTitle").val() == ''){
 							alert("문의 제목을 작성해주세요.");
+							e.preventDefault();
+							return;
 						}else {
 							if($("#inqContent").val() == ''){
 								alert("문의할 내용을 작성해주세요.");
+								e.preventDefault();
+								return;
 							}else {
 								
 							}
 						}
 					}
 				}
-				
+
 			}		
 			if($(".infoChk").is(":checked")){
 			  $('#writeBtn').prop("type", "submit");

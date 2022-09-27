@@ -56,7 +56,7 @@
                             <td><%=d.getMemberId()%></td>
                             <td><%=d.getDonationPhone()%></td>
                             <td class="td-amount"><%=formatter.format(d.getDonationAmount())%></td>
-                            <td><button type="button" class="btn bc4">취소</button></td>
+                            <td><button type="button" class="btn bc4" onclick="alert('준비중입니다.')">취소</button></td>
                         </tr>
                         <%}%>
 

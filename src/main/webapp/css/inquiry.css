@@ -26,7 +26,7 @@
 	display: inline-block;
 	width: 120px;
 	height: 40px;
-	background-color: #5AC5DB;
+	background-color: #eeeeee6;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 40px;
@@ -34,7 +34,7 @@
 	font-weight: 700;
 }
 #inquiry-tbl tr th{
-	background-color: #0078AA;
+	background-color: var(--point-color-blue);
 }
 .inquiry-wrap span a:hover{
 	background-color: #0078AA;
@@ -115,6 +115,7 @@
 }
 #inquiryWrite tr th{
 	height: 50px;
+	background: var(--point-color-blue);
 }
 .inquiryFrm-wrap>span>a{
 	display: inline-block;
