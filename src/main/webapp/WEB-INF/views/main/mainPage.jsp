@@ -67,7 +67,7 @@
                         <div class="main-wrap-bottom">
                             <span>이대로 <br>
                             꾸준히 버리시겠습니까?</span><br>
-                            <span>-Yunsu Lee -</span><br>
+                            <span>-자라자라잔잔-</span><br>
                         </div>
                     </div>
                     <img src="/img/index/index_main_img.jpg" alt="">
@@ -85,7 +85,7 @@
                                 지구에 남겨진 쓰레기, 이대로 괜찮을까요?
                             </div>
                             <div class="main-bottom-content">
-                                <img src="/img/common/img-main-title.png" alt="지구쓰담"><br>
+                                <img src="img/index/index_main_bottom_title.png" alt=""><br>
                                 <strong>이제는 우리의 손으로 지구를 푸르깅 할 때!</strong>
                                 <br>
                                 <p>플라스틱 쓰레기로부터 생명을 지키고,</p>
