@@ -27,7 +27,11 @@
      <!-- content -->
     <form action="/ploggingDetail1.do" method="get" onsubmit="return onchecked()">
         <div class="page-content">
+<<<<<<< HEAD
+            <div class="page-content-img"><img src="/img/common/plogging.2.jpg" alt=""></div>
+=======
             <div class="page-content-img"><img src="/img/common/plogging2.jpg" alt=""></div>
+>>>>>>> main
             <div class="page-content-map">
                 <div class="map-title">위치 정보</div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.903093515661!2d126.8945896152442!3d37.5337815798041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9edb0d6df1b1%3A0x8ae903d3dc14b683!2zS0jsoJXrs7TqtZDsnKHsm5Ag64u57IKw7KeA7JuQ!5e0!3m2!1sko!2skr!4v1663743515956!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
