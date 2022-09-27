@@ -8,6 +8,7 @@ import com.earthpurging.index.model.dao.IndexDao;
 import com.earthpurging.index.model.vo.ChellengeMemberData;
 import com.earthpurging.index.model.vo.ChellengeRank;
 import com.earthpurging.index.model.vo.ChellengeRankData;
+import com.earthpurging.index.model.vo.Plogging;
 import com.earthpurging.member.model.vo.Member;
 
 import common.JDBCTemplate;
@@ -40,5 +41,18 @@ public class IndexService {
 		ChellengeMemberData all = dao.allTrash(conn);
 		JDBCTemplate.close(conn);
 		return all;
+	}
+
+	public int insertPlogging(Plogging p) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertPlogging(conn, p);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
 	}
 }
