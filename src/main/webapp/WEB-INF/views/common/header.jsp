@@ -5,7 +5,6 @@
     
     <%
 		Member m = (Member)session.getAttribute("m");
-    
     	ChellengeMemberData cmd = (ChellengeMemberData)session.getAttribute("cmd"); 
 	%>
     
@@ -32,10 +31,9 @@
         </div>
         <div class="header-bottom">
             <ul class="header-menu">
-                <li><a href="javascript:void(0);">줍깅 캠페인</a></li>
+                <li><a href="/mainPage.do?reqPage=1">줍깅 캠페인</a></li>
                 <li><a href="/chellengeFrm.do?reqPage=1">쓰담위크 퀘스트</a></li>
                 <li><a href="/storyList.do?reqPage=1">쓰담 스토리</a></li>
-                <li><a href="javascript:void(0);">쓰담 굿즈</a></li>
                 <li><a href="/noticeList.do?reqPage=1">쓰담 소식</a></li>
                 <li><a href="/plogging.do">진행중인 플로깅</a></li>
                 <%if(m!=null && m.getMemberLevel() == 1) {%>

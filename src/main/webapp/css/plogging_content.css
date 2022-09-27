@@ -3,12 +3,12 @@ a {
 }
 .page-content{
     margin:0 auto;
-    width: 80%;
     height: 1100px;
 }
 .page-open-content{
-    width: 100%;
-    height: 750px;
+    width: 1300px;
+    height: 800px;
+    margin:0 auto;
 }
 .page-open-title{
     padding-top: 50px;
