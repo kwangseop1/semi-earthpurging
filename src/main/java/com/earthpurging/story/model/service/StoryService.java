@@ -200,7 +200,7 @@ public class StoryService {
 		
 		//페이징 처리
 		//전체페이지 수 계산 -> 전체 게시물 수 조회
-		int totalCount = dao.selectStoryCount(conn);
+		int totalCount = dao.selectMyStoryCount(conn, memberNo);
 		//전체페이지
 		int totalPage = 0;
 		if(totalCount%numPerPage == 0) {

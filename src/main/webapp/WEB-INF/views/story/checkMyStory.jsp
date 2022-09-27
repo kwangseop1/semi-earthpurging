@@ -69,7 +69,7 @@
             <div class="story-menu">
             	<ul>
                		<li><a ref="/storyList.do?reqPage=1">PHOTO STORY</a></li>
-                    <li><a ref="#">COMMUNITY</a></li>
+                    <%--<li><a ref="#">COMMUNITY</a></li> --%>
                	</ul>
            	</div> 
             <div class="story-wrap">
