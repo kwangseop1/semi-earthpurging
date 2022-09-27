@@ -1,4 +1,4 @@
-package com.earthpurging.index.model.vo;
+package com.earthpurging.index.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PloggingDetail2Servlet
+ * Servlet implementation class PloggingServlet
  */
-@WebServlet(name = "ploggingDetail2.do", urlPatterns = { "/ploggingDetail2.do" })
-public class PloggingDetail2Servlet extends HttpServlet {
+@WebServlet(name = "plogging.do", urlPatterns = { "/plogging.do" })
+public class PloggingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PloggingDetail2Servlet() {
+    public PloggingServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +30,7 @@ public class PloggingDetail2Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/plogging_detail2.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/plogging.jsp");
 		view.forward(request, response);
 	}
 

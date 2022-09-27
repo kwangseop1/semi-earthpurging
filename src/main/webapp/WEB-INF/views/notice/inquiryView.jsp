@@ -37,15 +37,9 @@
 				<td colspan="3"><%=inq.getInquiry_writer() %></td>
 			</tr>
 			<tr>
-				<th class="th">첨부파일</th>
-				<td colspan="2">
-				<%if(inq.getInquiry_filepath() != null) {%>
-				<img src="/img/file.png" width="16px">
-				<a href="/inquiryfileDown.do?inquiryNo=<%=inq.getInquiry_no() %>"><%=inq.getInquiry_filepath() %></a>				
-				<%} %>
-				</td>
+				
 				<th class="th">작성일</th>
-				<td><%=inq.getInquiry_enroll_date() %></td>
+				<td colspan="4"><%=inq.getInquiry_enroll_date() %></td>
 			</tr>
 			<tr>
 				<th colspan="6"><%=inq.getInquirer_email() %></th>
@@ -74,7 +68,6 @@
 					<li>
 						<input type="hidden" name="icWriter" value="<%=m.getNickname() %>">
 						<input type="hidden" name="inquiryRef" value="<%=inq.getInquiry_no()%>">
-						
 						
 						<textarea class="input-form" name="icContent" id="comment-form"></textarea>
 					</li>

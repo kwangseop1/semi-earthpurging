@@ -44,7 +44,7 @@ public class MainPageServlet extends HttpServlet {
 		//[2번 로직] 지금까지 모인 모든 쓰레기 데이터
 		ChellengeMemberData all = service.allTrash();
 
-		
+		//[3번로직] 유저별로 챌린지 등록한...
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/mainPage.jsp");
 		

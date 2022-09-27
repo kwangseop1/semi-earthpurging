@@ -49,7 +49,7 @@
                             <td><%=member.getMemberPhone()%></td>
                             <td><%=member.getMemberEmail()%></td>
                             <td><%=member.getMemberAddr()%></td>
-                            <td><button type="button" class="btn bc2" data-target="<%=member.getMemberNo()%>" onclick="deleteMember(this)">삭제</button></td>
+                            <td><%--<button type="button" class="btn bc2" data-target="<%=member.getMemberNo()%>" onclick="deleteMember(this)">삭제</button>--%></td>
                         </tr>
                         <%}%>
 

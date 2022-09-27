@@ -210,4 +210,23 @@ public class MemberDao {
 
 		return result;
 	}
+
+	public int updateMemberTotalPoint(Connection conn, int questNo) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update member_tbl set total_point = total_point+(select quest_point from chellenge_list where quest_no=?) where member_no=(select member_no from chellenge_list where quest_no=?)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, questNo);
+			pstmt.setInt(2, questNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

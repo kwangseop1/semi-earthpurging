@@ -9,6 +9,7 @@ public class ChellengeRank {
 	private int questWrapper; //비닐 개수
 	private int questTabacoo; //담배꽁초 개수
 	private int questPoint; //퀘스트 점수
+	private String photoPath;//사진경로
 	private int memberNo; // 회원번호
 	private String memberId; //아이디
 	private String memberName;//이름
@@ -21,8 +22,8 @@ public class ChellengeRank {
 	}
 
 	public ChellengeRank(int rank, int questCan, int questPla, int questGlass, int questPaper, int questWrapper,
-			int questTabacoo, int questPoint, int memberNo, String memberId, String memberName, String nickName,
-			String memberIntro) {
+			int questTabacoo, int questPoint, String photoPath, int memberNo, String memberId, String memberName,
+			String nickName, String memberIntro) {
 		super();
 		this.rank = rank;
 		this.questCan = questCan;
@@ -32,6 +33,7 @@ public class ChellengeRank {
 		this.questWrapper = questWrapper;
 		this.questTabacoo = questTabacoo;
 		this.questPoint = questPoint;
+		this.photoPath = photoPath;
 		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberName = memberName;
@@ -103,6 +105,14 @@ public class ChellengeRank {
 		this.questPoint = questPoint;
 	}
 
+	public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -143,5 +153,5 @@ public class ChellengeRank {
 		this.memberIntro = memberIntro;
 	}
 	
-	
+		
 }

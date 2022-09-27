@@ -35,6 +35,8 @@ public class DeleteInquiryCommentServlet extends HttpServlet {
 		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		NoticeService service = new NoticeService();
 		int result = service.deleteInquiryComment(icNo);
+		int result1 = service.updateIsAnswer2(inquiryNo);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
 			request.setAttribute("title", "삭제 성공");

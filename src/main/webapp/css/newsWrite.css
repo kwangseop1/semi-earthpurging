@@ -34,4 +34,9 @@
 	width: 866px;
 	height: 60px;
 	border: none;
+	background-color: #5AC5DB;
+}
+.writeBtn:hover{
+	background-color: #0078AA;
+	cursor: pointer;
 }

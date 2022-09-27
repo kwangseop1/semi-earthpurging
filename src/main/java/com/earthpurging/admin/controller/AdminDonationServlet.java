@@ -1,6 +1,10 @@
 package com.earthpurging.admin.controller;
 
+import com.earthpurging.donation.model.service.DonationService;
+import com.earthpurging.donation.model.vo.Donation;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +28,13 @@ public class AdminDonationServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+
+        DonationService donaService = new DonationService();
+        ArrayList<Donation> list = donaService.selectAllDonation();
+        int totalDonation = donaService.getTotalDonation();
+
+        request.setAttribute("list", list);
+        request.setAttribute("totalDonation", totalDonation);
 
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/adminDonation.jsp");
         view.forward(request, response);

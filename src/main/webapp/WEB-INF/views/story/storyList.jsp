@@ -30,6 +30,31 @@
     text-align: center;
     
 	}
+	.modal-top>span:hover{
+    cursor: pointer;
+	}
+	#story-nickname{
+	font-size: 22px;
+    font-weight: 800;
+    color: var(--main-bg-color);
+	}
+	#storyWriter{
+	font-size: 18px;
+    font-weight: 800;
+    color: var(--main-bg-color);
+	}
+	.read-count{
+	display: flex;
+	align-items: center;
+	}
+	.posting-comment > li:first-child .comment-info {
+	display: flex;
+    flex-direction: row !important;
+	}
+	.modal-top{
+	position:relative;
+	}
+	
 
 </style>
 </head>
@@ -40,16 +65,20 @@
     	<div class="story-title">
         	<h1>PHOTO STORY</h1>
             <% if(m!= null) {%>
-            <div><a href="/storyWriteFrm.do" class="btn bc3">후기쓰기</a></div>
+            <div id="btn">
+            	<a href="/storyWriteFrm.do" class="btn bc3">후기쓰기</a>
+            	<a href="/checkMyStory.do?reqPage=1&memberNo=<%=m.getMemberNo() %>" class="btn bc3">내글 확인</a>
+            </div>
+            
             <%}else {%>
-            <div><a href="/signinFrm.do" class="btn bc3">후기쓰기</a></div>
+            <div id="btn"><a href="/common/signinFrm.jsp" class="btn bc3">후기쓰기</a></div>
             <%} %>
         </div>
         <div class="mid-content">
             <div class="story-menu">
             	<ul>
-               		<li><a ref="storyList.do?reqPage=1">PHOTO STORY</a></li>
-                    <li><a ref="#">COMMUNITY</a></li>
+               		<li><a ref="/storyList.do?reqPage=1">PHOTO STORY</a></li>
+                    <%--<li><a ref="#">COMMUNITY</a></li> --%>
                	</ul>
            	</div> 
             <div class="story-wrap">
@@ -59,12 +88,15 @@
                         <div class="photo-box">
                        	<!--예시이미지-->
                        	
-                        <a href="#상세페이지"><img src="/upload/story/<%=s.getPhotoPath() %>"></a>
+                        <a href="#"><img src="/upload/story/<%=s.getPhotoPath() %>"></a>
                    		</div>
                        	<div class="like-box">
 							<span id="storyWriter"><%=s.getNickname() %></span>
-                            <span class="material-symbols-outlined">favorite</span>
-                            </div> 
+							<div class="read-count">
+                            <span class="material-symbols-outlined">visibility</span>
+                            <%=s.getStoryReadCount() %>							
+							</div>
+                        </div> 
                         <div class="story-text">
                        		<a href="#상세페이지"><span><%=s.getStoryContent() %></span></a>
                         </div>
@@ -101,8 +133,10 @@
                     <div class="modal-mid">
                         <div class="modal-photo" id="modal-photo">
                             <img id="story-img" src=""><br>
-                            <span id="read-count"></span>
-                            <span id="reg-date"></span>
+                            <div id="story-data">
+                            	<span id="read-count-icon" class="material-symbols-outlined">visibility<span id="read-count"></span></span>
+                            	<span id="reg-date"></span>                            
+                            </div>
                         </div>
                         <div class="modal-text">
                             <span id="modal-text"></span>
@@ -129,7 +163,7 @@
                                 <textarea class="input-form" name="scContent" id="hiddenScContent"></textarea>
                            </li>
                            <li>
-                                <button type="button" id="commentBtn"class="btn bc5 bs4">댓글달기</button>
+                                <button type="button" id="commentBtn"class="btn bc5">댓글달기</button>
                            </li>
                         </ul>
                     </div>
@@ -163,12 +197,14 @@
 	    scWriter.empty();
 	    scDate.empty();
 	    scContent.empty();
+	    $("#hiddenScContent").val("");
 	    
 	    
 	});
 
 	/*상세페이지 띄우기*/
-	$(".photo-box").on("click",function(){
+	$(".story-box",).on("click",function(){
+		
 	    $(".story-modal").css("display","flex");
 	});
 	
@@ -191,10 +227,11 @@
 					nickname.append(data.s.nickname);
 					img.attr("src","/upload/story/"+data.s.photoPath);
 					storyContent.append(data.s.storyContent);
-					storyReadCount.append("조회수 : "+data.s.storyReadCount);
+					storyReadCount.append(data.s.storyReadCount);
 					storyRegDate.append(data.s.storyRegDate);
 					storyRef.attr("value",data.s.storyNo);
 					
+					$("#hiddenScContent").val("");
 					const storyComment = $(".story-modal .story-comment");
 					storyComment.empty();
 					
@@ -213,6 +250,7 @@
                     	html += '</ul>';
                     	storyComment.append(html);
 						
+               			
 					}
 					
 					//result.append("이름 : "+data.memberName+"<br>");
@@ -225,6 +263,7 @@
 				console.log("정보조회실패");
 			}
 		})
+		
 	});
 	
 	$("#commentBtn").on("click",function(){
@@ -266,6 +305,7 @@
 		
 			}
 		});
+		$("#hiddenScContent").val("");
 	});
 	
 	</script>

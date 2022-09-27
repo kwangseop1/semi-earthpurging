@@ -304,9 +304,39 @@ public class NoticeService {
 	}
 
 
-	
+	public int updateIsAnswer(int inquiryRef) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateIsAnswer(conn, inquiryRef);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 
 
+	public int updateIsAnswer2(int inquiryNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateIsAnswer2(conn, inquiryNo);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int selectAnswerWaitingCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int waitingCnt = dao.selectAnswerWaitingCount(conn);
+
+		JDBCTemplate.close(conn);
+
+		return waitingCnt;
+	}
 
 
 

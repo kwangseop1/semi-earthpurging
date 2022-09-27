@@ -1,4 +1,4 @@
-package com.earthpurging.index.model.vo;
+package com.earthpurging.index.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PloggingDetail1Servlet
+ * Servlet implementation class Plogging1Servlet
  */
-@WebServlet(name = "ploggingDetail1.do", urlPatterns = { "/ploggingDetail1.do" })
-public class PloggingDetail1Servlet extends HttpServlet {
+@WebServlet(name = "plogging1.do", urlPatterns = { "/plogging1.do" })
+public class Plogging1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PloggingDetail1Servlet() {
+    public Plogging1Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }

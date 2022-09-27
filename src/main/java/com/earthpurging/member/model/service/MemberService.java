@@ -133,4 +133,18 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+	public int updateMemberTotalPoint(int questNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.updateMemberTotalPoint(conn, questNo);
+
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }

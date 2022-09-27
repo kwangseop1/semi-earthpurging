@@ -19,16 +19,26 @@
 	width: 900px;
 	margin: 0 auto;
 }
+#inquiry-tbl tr th{
+	font-weight: 700;
+}
 .inquiry-wrap>span>a{
 	display: inline-block;
 	width: 120px;
 	height: 40px;
-	background-color: #5AC5DB;
+	background-color: #eeeeee6;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 40px;
 	font-size: 16px;
 	font-weight: 700;
+}
+#inquiry-tbl tr th{
+	background-color: var(--point-color-blue);
+}
+.inquiry-wrap span a:hover{
+	background-color: #0078AA;
+	cursor: pointer;
 }
 
 /*inquiryView*/
@@ -105,6 +115,7 @@
 }
 #inquiryWrite tr th{
 	height: 50px;
+	background: var(--point-color-blue);
 }
 .inquiryFrm-wrap>span>a{
 	display: inline-block;
@@ -148,10 +159,11 @@
 #inquiryWrite tr:nth-of-type(5)>th{
 	
 }
-#inquiryWrite tr:nth-of-type(7) td{
+#inquiryWrite tr:nth-of-type(7) th{
 	border-left: none;
 	border-right: none;
 	border-bottom: none;
+	border-top: none;
 }
 #inquiryWrite tr:nth-of-type(8) th{
 	border-left: none;
@@ -159,8 +171,29 @@
 	border-bottom: none;
 	border-top: none;
 }
+#inquiryWrite tr:nth-of-type(6) td{
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}
+
+
+
+#inquiryWrite tr:nth-of-type(6) td>div{
+	height: 40px;
+	padding-top: 20px;
+}
 .page-title3{
 	color: #00aaad;
 	font-size: 35px;
 	font-weight: 900;
 }
+.inquiryFrm-wrap span a:hover{
+	background-color: #0078AA;
+	cursor: pointer;
+
+}
+
+
+
+

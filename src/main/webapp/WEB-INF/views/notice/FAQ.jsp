@@ -24,7 +24,7 @@
 		<div class="FAQ-wrap5">
 			<ul>
 				<li>
-					<div class="question-icon5">
+					<div class="question-icon5 que-icon">
 						<span>Q</span>
 						<span class="faq-font">어린이 또는 청소년의 참여가 가능한가요?</span>
 						<img src="/img/news/arrowDown.png">
@@ -38,7 +38,7 @@
 		<div class="FAQ-wrap4">
 			<ul>
 				<li>
-					<div class="question-icon4">
+					<div class="question-icon4 que-icon">
 						<span>Q</span>
 						<span class="faq-font">쓰담달리기를 할 때 유의해야할 점이 있나요?</span>
 						<img src="/img/news/arrowDown.png">
@@ -52,7 +52,7 @@
 		<div class="FAQ-wrap">
 			<ul>
 				<li>
-					<div class="question-icon">
+					<div class="question-icon que-icon">
 						<span>Q</span>
 						<span class="faq-font">신청은 혼자 했는데 활동을 친구 또는 가족과 했습니다. 쓰담 기록지를 모두 제출하면 인정되나요?</span>
 						<img src="/img/news/arrowDown.png">
@@ -66,7 +66,7 @@
 		<div class="FAQ-wrap2">
 			<ul>
 				<li>
-					<div class="question-icon2">
+					<div class="question-icon2 que-icon">
 						<span>Q</span>
 						<span class="faq-font">참가신청만 하면 봉사시간이 인증되나요?</span>
 						<img src="/img/news/arrowDown.png">
@@ -80,7 +80,7 @@
 		<div class="FAQ-wrap3">
 			<ul>
 				<li>
-					<div class="question-icon3">
+					<div class="question-icon3 que-icon">
 						<span>Q</span>
 						<span class="faq-font">쓰담 달리기 후 쓰레기는 어떻게 처리하나요?</span>
 						<img src="/img/news/arrowDown.png">

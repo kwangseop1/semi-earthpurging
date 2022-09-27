@@ -1,5 +1,8 @@
 package com.earthpurging.admin.controller;
 
+import com.earthpurging.chellenge.model.service.ChellengeService;
+import com.earthpurging.chellenge.model.vo.ChallengePageData;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +28,16 @@ public class AdminChallengeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
 
+        int reqPage = Integer.parseInt(request.getParameter("reqPage"));
+
+        ChellengeService service = new ChellengeService();
+        ChallengePageData cpd = service.selectChallengeList(reqPage);
+
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/adminChallenge.jsp");
+
+        request.setAttribute("list", cpd.getList());
+        request.setAttribute("pageNavi", cpd.getPageNavi());
+
         view.forward(request, response);
     }
 
