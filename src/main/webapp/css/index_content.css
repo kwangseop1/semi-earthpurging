@@ -461,6 +461,188 @@ to {
 }
 
 
+@import url('http://fonts.cdnfonts.com/css/dunggeunmo');
+@font-face {
+    font-family: 'DOSMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#myinfo{
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 1000px;
+}
+.myinfo-container{
+    width: 100%;
+    height: 1000px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.myinfo {
+    position: relative;
+}
+.myinfo-title{
+    text-align: center;
+    height: 200px;
+    width: 100%;
+    line-height: 300px;
+    font-size: 47px;
+    font-weight: bold;
+}
+.myinfo-content{
+    background-color: rgb(224, 224, 224);
+    width: 100%;
+    height: 800px;
+    display: inline-block;
+}
+.myinfo-wrap{
+    margin: 0 auto;
+    margin-top:5%;
+    width: 80%;
+    height: 640px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+}
+.myinfo{
+    width: 100%;
+    height: 100%;
+}
+.myinfo-wrapper{
+    width: 100%;
+    height: 100%;
+}
+.myinfo-slide{
+    width: 100%;
+    height: 100%;
+}
+.myinfo-slide-top{
+    width: 50%;
+    margin: 0 auto;
+    height: 120px;
+    line-height: 120px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px;
+}
+.myinfo-slide-top span{
+    font-size: 28px;
+    color: #0078aa;
+    font-weight: 800;
+    padding: 20px;
+}
+.myinfo-slide-middle-left{
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 235px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 800;
+    color: #393e46;
+    display: inline-block;
+}
+.myinfo-slide-middle{
+    width: 21%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 140px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 800;
+    color: #393e46;
+    display: inline-block;
+}
+.myinfo-slide-middle.middle{
+    width: 17%;
+    margin-left: 1.5%;
+}
+.myinfo-slide-middle.right{
+    width: 38.5%;
+    margin-left: 1.5%;
+}
+.myinfo-slide-middle-title{
+    text-align: left;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #393e46;
+}
+.myinfo-slide-middle-content{
+    font-size: 19px;
+    font-weight: 600;
+    font-family: 'DOSMyungjo';
+}
+.myinfo-slide-middle-content.last{
+    font-size: 15px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.myinfo-slide-middle-content span{
+    font-size: 36px;
+    font-weight: 800;
+    color: #0078aa;
+}
+.myinfo-slide-bottom{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 235px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    padding: 20px;
+}
+.myinfo-slide-bottom-title{
+    text-align: left;
+    font-size: 20px;
+    height: 25px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.myinfo-slide-bottom ul{
+    width: 100%;
+    height: 145px;
+}
+.myinfo-slide-bottom ul li{
+    width: 14%;
+    height: 100%;
+    float: left;
+    font-size: 20px;
+    font-weight: 800;
+}
+.myinfo-slide-bottom ul li .li-img{
+    width: 100%;
+    height: 70%;
+}
+.myinfo-slide-bottom ul li .li-img img{
+    margin-top: 5px;
+    height: 80%;
+}
+
+
+
+
+
 
 @import url('http://fonts.cdnfonts.com/css/dunggeunmo');
 @font-face {

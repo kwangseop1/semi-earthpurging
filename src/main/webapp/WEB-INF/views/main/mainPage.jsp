@@ -85,7 +85,7 @@
                                 지구에 남겨진 쓰레기, 이대로 괜찮을까요?
                             </div>
                             <div class="main-bottom-content">
-                                <img src="img/index/index_main_bottom_title.png" alt=""><br>
+                                <img src="img/common/img-main-title.png" alt=""><br>
                                 <strong>이제는 우리의 손으로 지구를 푸르깅 할 때!</strong>
                                 <br>
                                 <p>플라스틱 쓰레기로부터 생명을 지키고,</p>
@@ -157,7 +157,84 @@
                 </div>
             </section>
             <!-- End Ploggings section-->
-
+	
+			<%if(cmd!=null){%>
+			<!-- myinfo section-->
+            <section id="myinfo">
+                <div class="myinfo-container">
+                    <div class="myinfo-title">접속자 정보</div>
+                    <div class="myinfo-content">
+                        <div class="myinfo-wrap">
+                            <!-- Slider main container -->
+                            <div class="myinfo">
+                                <!-- Additional required wrapper -->
+                                <div class="myinfo-wrapper">
+                                    <!-- Slides -->
+                                    <div class="myinfo-slide">
+                                        <div class="myinfo-slide-top">현재 당신의 <span>'Quest Point Boad'</span> 입니다.</div>
+                                        <div class="myinfo-slide-middle left">
+                                            <div class="myinfo-slide-middle-title">당신의 포인트</div>
+                                            <div class="myinfo-slide-middle-content"><span><%=cmd.getQuestPoint() %></span> Point</div>
+                                        </div>
+                                        <div class="myinfo-slide-middle middle">
+                                            <div class="myinfo-slide-middle-title">당신의 이름</div>
+                                            <div class="myinfo-slide-middle-content middle"><span>:</span> <%=m.getMemberName() %></div>
+                                        </div>
+                                        <div class="myinfo-slide-middle right">
+                                            <div class="myinfo-slide-middle-title">자기소개</div>
+                                            <div class="myinfo-slide-middle-content last"><span> : </span><%=m.getMemberIntro()%></div>
+                                        </div>
+                                        <div class="myinfo-slide-bottom">
+                                            <div class="myinfo-slide-bottom-title">현재 당신의 총 플로깅 줍것들</div>
+                                            <div class="myinfo-slide-bottom-content">
+                                                <ul>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-recycle-can.png" alt=""></div>
+                                                        <%=cmd.getQuestCan()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-recycle-glass.png" alt=""></div>
+                                                        <%=cmd.getQuestGlass()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-recycle-paper.png" alt=""></div>
+                                                       	<%=cmd.getQuestPaper()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-recycle-plastic.png" alt=""></div>
+                                                        <%=cmd.getQuestPla()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-recycle-plastic2.png" alt=""></div>
+                                                        <%=cmd.getQuestWrapper()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-trash-tobacco.png" alt=""></div>
+                                                        <%=cmd.getQuestTabacoo()%>
+                                                    </li>
+                                                    <li>
+                                                        <div class="li-img"><img src="/img/img-plogging.png" alt=""></div>
+                                                        Level: <%=cmd.getMemberLevel()%>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            
+                                <!-- If we need scrollbar -->
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#chart" class="button style2 down anchored"></a>
+                </div>
+            </section>
+            <!-- End myinfo section-->
+			<%} %>
+			
             <!-- Ranking section-->
             <section id="ranking">
                 <div class="ranking-container">
